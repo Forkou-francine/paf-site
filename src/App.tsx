@@ -597,7 +597,6 @@ function ContactFormReal() {
       )}
       {!FORMSPREE_ID && (
         <p className="text-xs text-zinc-500">
-          Astuce : ajoute ton ID Formspree pour un envoi direct (sinon, ouverture du client mail).
         </p>
       )}
     </form>
