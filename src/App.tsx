@@ -1,7 +1,8 @@
 import React, { useMemo, useState, useEffect } from "react";
-import { motion } from "framer-motion";
-// ✨ NOUVEAU : Importation des icônes pour les réseaux sociaux
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin, FaMedium } from "react-icons/fa";
+import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
+
 
 import heroPhoto from "./assets/ange1.jpg";
 
@@ -110,8 +111,7 @@ const education = [
 
 type Cert = { name: string; issuer: string; year?: string; id?: string; link?: string; image?: string };
 const certifications: Cert[] = [
-  { name: "IBM Data Analyst Professional Certificate", issuer: "IBM / Coursera", link: "https://www.coursera.org/professional-certificates/ibm-data-analyst" },
-  { name: "AI Foundations for Everyone Specialization", issuer: "IBM / Coursera", link: "https://www.coursera.org/account/accomplishments/specialization/WQ2GLB46L5M6" },
+  { name: "IBM Data Analyst Professional Certificate", issuer: "IBM / Coursera", link: "https://www.coursera.org/account/accomplishments/specialization/WQ2GLB46L5M6" },
   { name: "Dataiku Core Designer", issuer: "Dataiku", link: "http://verify.skilljar.com/c/z6p5zxzj6ped" },
   { name: "Microsoft Certified: Power BI Data Analyst Associate", issuer: "Microsoft", link: "https://learn.microsoft.com/certifications/power-bi-data-analyst-associate/" },
   { name: "Databricks for Data Engineering", issuer: "Databricks", link: "https://www.databricks.com/learn/certification" },
@@ -119,9 +119,26 @@ const certifications: Cert[] = [
 
 type Project = { name: string; org: string; period: string; bullets: string[]; cover?: string; stack: string[]; link?: string; gallery?: string[]; };
 const projects: Project[] = [
-  { name: "Tableau de bord des réclamations", org: "CNAF – Alternance", period: "2024 — 2025", bullets: ["Modélisation et pipeline ETL (Databricks · Spark · Python).", "Mesures DAX & modèles pour Power BI ; drilldown multi-niveaux.", "Suivi des réclamations, typologies & délais de traitement."], cover: cnafDashboard, gallery: [cnafDashboard, cnafAnalyse], stack: ["Databricks", "Spark", "Python", "Power BI", "Azure"], link: "#" },
-  { name: "Analyse de données e-commerce", org: "EPSI – M1", period: "2024 — 2025", bullets: ["Ingestion & préparation (Hadoop · Spark · MapReduce).", "Exploration & KPI pour suivi de ventes.", "Data viz pour recommandations marketing."], cover: schoolProjectOne, stack: ["Hadoop", "Spark", "MapReduce"], link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
-  { name: "Pipeline Big Data pour un labo de recherche", org: "EPSI – M1", period: "2024 — 2025", bullets: ["Orchestration Airflow, transformations avec dbt & Spark.", "Stockage & modélisation (PostgreSQL) — reporting Looker Studio.", "CI légère et documentation."], cover: schoolProjectTwo, gallery: [schoolProjectTwo, schoolProjectTwoOne], stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt", "PostgreSQL"], link: "https://www.canva.com/design/DAGqzNY5xKY/9o3BTlrJ3Ax-Hc3CJfh6rw/edit?utm_content=DAGqzNY5xKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
+  { name: "Tableau de bord des réclamations", 
+    org: "CNAF – Alternance", period: "2024 — 2025", 
+    bullets: ["Modélisation et pipeline ETL (Databricks · Spark · Python).", "Mesures DAX & modèles pour Power BI ; drilldown multi-niveaux.", "Suivi des réclamations, typologies & délais de traitement."], 
+    cover: cnafDashboard, gallery: [cnafDashboard, cnafAnalyse], stack: ["Databricks", "Spark", "Python", "Power BI", "Azure"], link: "#" },
+  { name: "Analyse de données e-commerce", 
+    org: "EPSI – M1", period: "2024 — 2025", 
+    bullets: ["Ingestion & préparation (Hadoop · Spark · MapReduce).", "Exploration & KPI pour suivi de ventes.", "Data viz pour recommandations marketing."], 
+    cover: schoolProjectOne, stack: ["Hadoop", "Spark", "MapReduce"], 
+    link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
+  { name: "Pipeline Big Data pour un labo de recherche", 
+    org: "EPSI – M1", period: "2024 — 2025", 
+    bullets: ["Orchestration Airflow, transformations avec dbt & Spark.", "Stockage & modélisation (PostgreSQL) — reporting Looker Studio.", "CI légère et documentation."], 
+    cover: schoolProjectTwo, gallery: [schoolProjectTwo, schoolProjectTwoOne], stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt", "PostgreSQL"], 
+    link: "https://www.canva.com/design/DAGqzNY5xKY/9o3BTlrJ3Ax-Hc3CJfh6rw/edit?utm_content=DAGqzNY5xKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
+  
+  { name: "Pipeline Big Data pour un labo de recherche", org: "EPSI – M1", period: "2024 — 2025", 
+    bullets: ["Orchestration Airflow, transformations avec dbt & Spark.", "Stockage & modélisation (PostgreSQL) — reporting Looker Studio.", "CI légère et documentation."], 
+    cover: schoolProjectTwo, gallery: [schoolProjectTwo, schoolProjectTwoOne], stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt", "PostgreSQL"], 
+    link: "https://www.canva.com/design/DAGqzNY5xKY/9o3BTlrJ3Ax-Hc3CJfh6rw/edit?utm_content=DAGqzNY5xKY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" },
+
 ];
 
 const skills = [
@@ -130,6 +147,12 @@ const skills = [
   { category: "Langages & Frameworks", items: ["Python", "Spark", "Java", "Scala"] },
   { category: "Bases de données", items: ["SQL", "NoSQL", "Cassandra", "MongoDB"] },
   { category: "CI/CD & Ops", items: ["Docker", "Kubernetes", "GitLab CI", "Azure DevOps"] },
+];
+
+const navLinks = [
+    { label: "À propos", id: "about" }, { label: "En cours", id: "now" },
+    { label: "Expériences", id: "experience" }, { label: "Projets", id: "projects" },
+    { label: "Compétences", id: "skills" }, { label: "Contact", id: "contact" },
 ];
 
 // --- UI Components ---
@@ -148,7 +171,7 @@ function Section({ id, title, subtitle, children }: { id: string; title: string;
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
-          {subtitle && <p className="mt-2 max-w-2xl mx-auto text-md text-zinc-600">{subtitle}</p>}
+          {subtitle && <p className="mt-2 max-w-2xl mx-auto text-md text-zinc-600 dark:text-slate-400">{subtitle}</p>}
           <div className={`mt-4 h-1 w-24 mx-auto bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} rounded-full`} />
         </div>
         {children}
@@ -224,7 +247,7 @@ function useCounter(target: number, duration = 1400) {
 
 function Stat({ label, value, suffix = "+" }: { label: string; value: number; suffix?: string }) {
   const n = useCounter(value);
-  return <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200"><div className="text-3xl font-extrabold">{n}{suffix}</div><div className="mt-1 text-sm text-zinc-600">{label}</div></div>;
+  return <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200"><div className="text-3xl font-extrabold">{n}{suffix}</div><div className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{label}</div></div>;
 }
 
 function Progress({ value }: { value: number }) {
@@ -232,7 +255,7 @@ function Progress({ value }: { value: number }) {
 }
 
 function RoadmapItem({ title, detail, tag }: { title: string; detail?: string; tag?: string; }) {
-  return <li className="rounded-xl bg-white/70 p-3 ring-1 ring-zinc-200"><div className="flex items-center justify-between gap-3"><span className="font-medium">{title}</span>{tag && <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs font-semibold text-white">{tag}</span>}</div>{detail && <p className="mt-1 text-xs text-zinc-600">{detail}</p>}</li>;
+  return <li className="rounded-xl bg-white/70 p-3 ring-1 ring-zinc-200"><div className="flex items-center justify-between gap-3"><span className="font-medium">{title}</span>{tag && <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs font-semibold text-white">{tag}</span>}</div>{detail && <p className="mt-1 text-xs text-zinc-600 dark:text-slate-400">{detail}</p>}</li>;
 }
 
 const FORMSPREE_ID = ""; // ← Mettre l'ID Formspree ici.
@@ -274,10 +297,41 @@ function ContactFormReal() {
       <input name="subject" placeholder="Sujet" className={`h-10 w-full rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`} />
       <textarea name="message" required rows={4} placeholder="Votre message..." className={`w-full rounded-md border p-3 outline-none focus:ring-2 ${colors.ring}`} />
       <button type="submit" disabled={status === "sending"} className={`btn-hover w-full rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-4 py-2 font-semibold text-white shadow-sm disabled:opacity-60`}>{status === "sending" ? "Envoi..." : "Envoyer"}</button>
-      {status !== "idle" && <p className={`text-sm ${status === "ok" ? "text-emerald-600" : status === "error" ? "text-red-600" : "text-zinc-500"}`}>{msg}</p>}
+      {status !== "idle" && <p className={`text-sm ${status === "ok" ? "text-emerald-600" : status === "error" ? "text-red-600" : "text-zinc-500 dark:text-slate-500"}`}>{msg}</p>}
     </form>
   );
 }
+
+function useTheme() {
+  const getInitial = () => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  };
+  const [theme, setTheme] = useState<"light" | "dark">(getInitial);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const root = document.documentElement;
+    theme === "dark" ? root.classList.add("dark") : root.classList.remove("dark");
+  }, [theme]);
+
+  return { theme, toggle: () => setTheme((t) => (t === "dark" ? "light" : "dark")) };
+}
+
+function ThemeToggle({ theme, toggle }: { theme: "light" | "dark"; toggle: () => void }) {
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Basculer le thème"
+      className="btn-hover rounded-full bg-white/80 px-3 py-2 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"
+      title={theme === "dark" ? "Mode clair" : "Mode sombre"}
+    >
+      {theme === "dark" ? <FiSun /> : <FiMoon />}
+    </button>
+  );
+}
+
 
 // --- Main Component ---
 
@@ -286,6 +340,12 @@ export default function Portfolio() {
   const allTechs = useMemo(() => Array.from(new Set(projects.flatMap((p) => p.stack))).sort(), []);
   const [activeTechs, setActiveTechs] = useState<Set<string>>(new Set());
 
+  const [activeSkillTab, setActiveSkillTab] = useState(skills?.[0]?.category ?? '');
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  const { theme, toggle } = useTheme();              // ← NEW
+  const [navOpen, setNavOpen] = useState(false);
+
   const toggleTech = (t: string) => setActiveTechs((prev) => { const next = new Set(prev); next.has(t) ? next.delete(t) : next.add(t); return next; });
   const resetTech = () => setActiveTechs(new Set());
 
@@ -293,6 +353,7 @@ export default function Portfolio() {
     if (activeTechs.size === 0) return projects;
     return projects.filter((p) => p.stack.some((s) => activeTechs.has(s)));
   }, [activeTechs]);
+  const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
 
   const [lb, setLb] = React.useState<{ images: string[]; index: number } | null>(null);
   const openLb = (images: string[], index = 0) => images.length && setLb({ images, index });
@@ -301,20 +362,106 @@ export default function Portfolio() {
   const nextLb = () => lb && setLb({ ...lb, index: (lb.index + 1) % lb.images.length });
 
   return (
-    <div className={`min-h-screen text-zinc-900`}>
-      <div className={`pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b ${colors.softFrom} ${colors.softTo}`} />
+    <div className="min-h-screen text-zinc-900 dark:text-slate-100">
+    {/* Fond clair/sombre allégé */}
+    <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-white to-zinc-50 dark:from-slate-950 dark:to-slate-900" />
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-fuchsia-300/30 blur-3xl animate-pulse-slow" />
         <div className="absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-indigo-300/30 blur-3xl animate-pulse-slower" />
       </div>
 
-      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur dark:bg-slate-900/70 dark:border-slate-800">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <a href="#top" className="font-semibold tracking-tight"><span className="mr-2 inline-block h-2 w-2 rounded-full bg-zinc-900 align-middle" />{profile.name}</a>
-          <nav className="hidden gap-6 text-sm md:flex">{[["À propos", "about"], ["En cours", "now"], ["Expériences", "experience"], ["Projets", "projects"], ["Compétences", "skills"], ["Contact", "contact"]].map(([label, id]) => <a key={id} href={`#${id}`} className="link-underline">{label}</a>)}</nav>
-          {profile.cvUrl && <a href={profile.cvUrl} className={`btn-hover rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:opacity-95`} target="_blank" rel="noreferrer">Mon CV</a>}
+          {/* Marque */}
+          <a href="#top" className="font-semibold tracking-tight">
+            <span className="mr-2 inline-block h-2 w-2 rounded-full bg-zinc-900 align-middle dark:bg-white" />
+            {profile.name}
+          </a>
+
+          {/* Menu desktop allégé */}
+          <nav className="hidden items-center gap-6 text-sm md:flex">
+            {navLinks.map(({ label, id }) => (
+              <a key={id} href={`#${id}`} className="link-underline">
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
+            {profile.cvUrl && (
+              <a
+                href={profile.cvUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`btn-hover hidden rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-3 py-1.5 text-sm font-medium text-white shadow-sm hover:opacity-95 md:inline-flex`}
+              >
+                Mon CV
+              </a>
+            )}
+            {/* Toggle thème */}
+            <ThemeToggle theme={theme} toggle={toggle} />
+            {/* Hamburger (affiché partout pour être cohérent) */}
+            <button
+              onClick={() => setNavOpen(true)}
+              className="btn-hover rounded-full bg-white/80 p-2 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700 md:hidden"
+              aria-label="Ouvrir le menu"
+            >
+              <FiMenu />
+            </button>
+          </div>
         </div>
+
+        {/* Drawer mobile */}
+        <AnimatePresence>
+          {navOpen && (
+            <motion.aside
+              initial={{ y: -12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              className="md:hidden"
+            >
+              <div className="mx-auto max-w-6xl px-4 pb-3">
+                <div className="rounded-xl bg-white/90 p-3 ring-1 ring-zinc-200 backdrop-blur dark:bg-slate-900/80 dark:ring-slate-700">
+                  <div className="mb-2 flex items-center justify-between">
+                    <button
+                      onClick={() => setNavOpen(false)}
+                      className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/10"
+                      aria-label="Fermer le menu"
+                    >
+                      <FiX />
+                    </button>
+                  </div>
+                  <div className="grid gap-1">
+                    {navLinks.map(({ label, id }) => (
+                      <a
+                        key={id}
+                        href={`#${id}`}
+                        onClick={() => setNavOpen(false)}
+                        className="rounded-lg px-3 py-2 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                      >
+                        {label}
+                      </a>
+                    ))}
+                    {profile.cvUrl && (
+                      <a
+                        href={profile.cvUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={() => setNavOpen(false)}
+                        className={`btn-hover mt-1 inline-flex items-center justify-center rounded-lg bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-3 py-2 text-sm font-semibold text-white`}
+                      >
+                        Mon CV
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </motion.aside>
+          )}
+        </AnimatePresence>
       </header>
+
 
       <main>
         {/* HERO */}
@@ -323,11 +470,11 @@ export default function Portfolio() {
             <div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs ring-1 ring-zinc-200">
                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span></span>
-                Disponible et à l'écoute d'opportunités
+                À l'écoute d'opportunités
               </div>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">{profile.title}</h1>
-              <p className="mt-2 text-lg text-zinc-600">{profile.tagline}</p>
-              <p className="mt-4 max-w-prose text-zinc-700">{profile.bio}</p>
+              <p className="mt-2 text-lg text-zinc-600 dark:text-slate-400">{profile.tagline}</p>
+              <p className="mt-4 max-w-prose text-zinc-700 dark:text-slate-300">{profile.bio}</p>
 
               {/* ✨ MODIFIÉ : Liens avec icônes */}
               <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
@@ -377,7 +524,7 @@ export default function Portfolio() {
                 <a href="#contact" className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white`}>Me contacter</a>
               </div>
             </div>
-            <div className="relative"><div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 shadow-xl ring-1 ring-zinc-200"><img src={heroPhoto} alt="Ange Francine Forkou" className="h-full w-full object-cover" /></div><div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" /></div>
+            <div className="relative"><div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 dark:bg-slate-900/60 shadow-xl ring-1 ring-zinc-200"><img src={heroPhoto} alt="Ange Francine Forkou" className="h-full w-full object-cover" /></div><div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" /></div>
           </div>
         </section>
 
@@ -393,16 +540,16 @@ export default function Portfolio() {
         
         <Section id="now" title="Dans Mon Radar Actuel 🔭" subtitle="Mes explorations du moment, ce que j'apprends et les prochaines étapes.">
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Alternance — CNAF</h3>
-              <p className="mt-1 text-sm text-zinc-600">Tableau de bord des réclamations · 2024—2025</p>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">Tableau de bord des réclamations · 2024—2025</p>
               <ul className="mt-3 list-disc pl-5 text-sm text-zinc-800">
                 <li>Ingestion & pipeline ETL (Databricks · Spark · Python)</li>
                 <li>Modèle métrique & DAX pour Power BI</li>
                 <li>Suivi SLA, typologies & délais de traitement</li>
               </ul>
             </div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Auto-formation</h3>
               <div className="mt-4 space-y-3">
                 <div><div className="mb-1 flex items-center justify-between text-xs"><span>Databricks Unity Catalog</span><span>45%</span></div><Progress value={45} /></div>
@@ -410,7 +557,7 @@ export default function Portfolio() {
                 <div><div className="mb-1 flex items-center justify-between text-xs"><span>Dataiku (Core → Advanced)</span><span>60%</span></div><Progress value={60} /></div>
               </div>
             </div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Roadmap 2025</h3>
               <ul className="mt-4 space-y-2">
                 <RoadmapItem title="Optimiser un pipeline Spark (cost & perf)" tag="Q3" detail="Benchmark + cache + AQE" />
@@ -423,18 +570,18 @@ export default function Portfolio() {
 
         <Section id="about" title="Au-delà du Code 👩‍💻" subtitle="Un peu plus sur ma personnalité, mes atouts et mes centres d'intérêt.">
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200"><h3 className="font-semibold">Langues</h3><ul className="mt-3 space-y-2 text-sm">{profile.languages.map((l) => <li key={l.name} className="flex items-start gap-2"><span className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo}`} /><span><span className="font-medium">{l.name}</span> — {l.level}</span></li>)}</ul></div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200"><h3 className="font-semibold">Atouts</h3><div className="mt-3 flex flex-wrap gap-2">{profile.softSkills.map((s) => <Badge key={s}>{s}</Badge>)}</div></div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200"><h3 className="font-semibold">Centres d’intérêt</h3><ul className="mt-3 list-inside list-disc text-sm">{profile.interests.map((it) => <li key={it}>{it}</li>)}</ul></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Langues</h3><ul className="mt-3 space-y-2 text-sm">{profile.languages.map((l) => <li key={l.name} className="flex items-start gap-2"><span className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo}`} /><span><span className="font-medium">{l.name}</span> — {l.level}</span></li>)}</ul></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Atouts</h3><div className="mt-3 flex flex-wrap gap-2">{profile.softSkills.map((s) => <Badge key={s}>{s}</Badge>)}</div></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Centres d’intérêt</h3><ul className="mt-3 list-inside list-disc text-sm">{profile.interests.map((it) => <li key={it}>{it}</li>)}</ul></div>
           </div>
         </Section>
 
-        <Section id="experience" title="Mon Odyssée Professionnelle 💼" subtitle="Les étapes clés et les missions qui ont façonné mon expertise.">
+        <Section id="experience" title="Mon Parcours Professionnel 💼" subtitle="Les étapes clés et les missions qui ont façonné mon expertise.">
           <div className="space-y-6">
             {experiences.map((exp) => (
-              <article key={exp.title} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
-                <div className="flex flex-wrap items-center justify-between gap-2"><h3 className="text-lg font-semibold">{exp.title} — <span className="text-zinc-700">{exp.company}</span></h3><span className="text-sm text-zinc-600">{exp.period}</span></div>
-                <p className="mt-1 text-sm text-zinc-600">{exp.location}</p>
+              <article key={exp.title} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+                <div className="flex flex-wrap items-center justify-between gap-2"><h3 className="text-lg font-semibold">{exp.title} — <span className="text-zinc-700 dark:text-slate-300">{exp.company}</span></h3><span className="text-sm text-zinc-600 dark:text-slate-400">{exp.period}</span></div>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{exp.location}</p>
                 <ul className="mt-3 list-disc pl-5 text-sm text-zinc-800">{exp.bullets.map((b, i) => <li key={i}>{b}</li>)}</ul>
                 <div className="mt-3 flex flex-wrap gap-2">{exp.tech.map((t) => <Badge key={t}>{t}</Badge>)}</div>
               </article>
@@ -445,35 +592,50 @@ export default function Portfolio() {
         <Section id="projects" title="Galerie de Projets 🎨" subtitle="Une sélection de mes réalisations. Plongez dans les détails !">
           <FilterBar techs={allTechs} active={activeTechs} onToggle={toggleTech} onReset={resetTech} />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((p) => <ProjectCard key={p.name} p={p} onOpen={openLb} />)}
-            {filteredProjects.length === 0 && <div className="col-span-full rounded-2xl bg-white/80 p-6 text-center text-sm ring-1 ring-zinc-200">Aucun projet ne correspond à ces filtres. Essayez autre chose !</div>}
+            {displayedProjects.map((p) => <ProjectCard key={p.name} p={p} onOpen={openLb} />)}
           </div>
+          {filteredProjects.length > 3 && (
+            <div className="mt-10 text-center">
+              <button onClick={() => setShowAllProjects(!showAllProjects)} className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white`}>
+                {showAllProjects ? "Voir moins de projets" : "Voir plus de projets"}
+              </button>
+            </div>
+          )}
         </Section>
 
         {lb && <Lightbox images={lb.images} index={lb.index} onClose={closeLb} onPrev={prevLb} onNext={nextLb} />}
 
         <Section id="skills" title="Ma Boîte à Outils Digitale 🛠️" subtitle="Les technologies que je maîtrise pour donner vie aux données.">
-          <div className="grid gap-6 md:grid-cols-2">
-            {skills.map((group) => (
-              <div key={group.category} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
-                <h3 className="font-semibold">{group.category}</h3>
-                <div className="mt-3 flex flex-wrap items-center gap-3 text-sm">{group.items.map((name) => techLogos[name] ? <span key={name} className="inline-flex items-center gap-2 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-200"><img src={techLogos[name]} alt={name} className="h-5 w-5 object-contain" /><span>{name}</span></span> : <Badge key={name}>{name}</Badge>)}</div>
-              </div>
-            ))}
+          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="flex flex-wrap border-b border-zinc-200">
+              {skills.map((group) => (
+                <button key={group.category} onClick={() => setActiveSkillTab(group.category)} className={`px-4 py-2 text-sm font-medium transition-colors ${activeSkillTab === group.category ? `border-b-2 border-violet-600 text-violet-600` : `border-b-2 border-transparent text-zinc-600 dark:text-slate-400 hover:text-zinc-900`}`}>
+                  {group.category}
+                </button>
+              ))}
+            </div>
+            <AnimatePresence mode="wait">
+              <motion.div key={activeSkillTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+                {skills.find(s => s.category === activeSkillTab)?.items.map((name) => techLogos[name] ? <span key={name} className="inline-flex items-center gap-2 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-200"><img src={techLogos[name]} alt={name} className="h-5 w-5 object-contain" /><span>{name}</span></span> : <Badge key={name}>{name}</Badge>)}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </Section>
 
         <Section id="certifications" title="Apprentissage Continu 🎓" subtitle="La preuve de ma curiosité et de ma volonté de toujours monter en compétence.">
-          <ul className="grid gap-4 md:grid-cols-2">
-            {certifications.map((c) => (
-              <li key={c.name} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200">
-                <div className="flex items-center justify-between gap-4">
-                  <div><div className="font-semibold">{c.name}</div><div className="text-sm text-zinc-600">{c.issuer}</div></div>
-                </div>
-                {c.link && <a href={c.link} className={`mt-3 inline-flex rounded-lg bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-3 py-1.5 text-xs font-semibold text-white`} target="_blank" rel="noreferrer">Voir le certificat</a>}
-              </li>
-            ))}
-          </ul>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+              <ul className="divide-y divide-zinc-200">
+                {certifications.map((c) => (
+                  <li key={c.name} className="flex flex-wrap items-center justify-between gap-4 py-4">
+                    <div>
+                      <div className="font-semibold">{c.name}</div>
+                      <div className="text-sm text-zinc-600 dark:text-slate-400">{c.issuer}</div>
+                    </div>
+                    {c.link && <a href={c.link} className={`btn-hover rounded-lg bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-3 py-1.5 text-xs font-semibold text-white shadow-sm`} target="_blank" rel="noreferrer">Voir le certificat</a>}
+                  </li>
+                ))}
+              </ul>
+            </div>
         </Section>
 
         <Section id="education" title="Mes Fondations Académiques 🏛️" subtitle="Le parcours qui a initié ma passion pour la tech et la data.">
@@ -482,9 +644,9 @@ export default function Portfolio() {
               <li key={e.school}>
                 <span className={`absolute -left-[9px] mt-1 block h-4 w-4 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} ring-8 ring-white`} />
                 <h3 className="font-semibold">{e.degree}</h3>
-                <p className="text-sm text-zinc-700">{e.school}</p>
-                <p className="text-xs text-zinc-500">{e.period}</p>
-                {e.details && <p className="mt-1 text-sm text-zinc-700">{e.details}</p>}
+                <p className="text-sm text-zinc-700 dark:text-slate-300">{e.school}</p>
+                <p className="text-xs text-zinc-500 dark:text-slate-500">{e.period}</p>
+                {e.details && <p className="mt-1 text-sm text-zinc-700 dark:text-slate-300">{e.details}</p>}
               </li>
             ))}
           </ol>
@@ -495,7 +657,7 @@ export default function Portfolio() {
             <div className="grid gap-8 md:grid-cols-2">
               <div>
                 <h3 className="text-lg font-semibold">Discutons de vos projets</h3>
-                <p className="mt-2 max-w-prose text-sm text-zinc-700">J'adore collaborer et échanger sur des sujets data/BI. Que ce soit pour une opportunité, une question technique ou simplement pour réseauter, ma porte est toujours ouverte.</p>
+                <p className="mt-2 max-w-prose text-sm text-zinc-700 dark:text-slate-300">J'adore collaborer et échanger sur des sujets data/BI. Que ce soit pour une opportunité, une question technique ou simplement pour réseauter, ma porte est toujours ouverte.</p>
                 <div className="mt-4 flex flex-col items-start gap-3 text-sm">
                   <a href={`mailto:${profile.email}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 ${colors.ring}`}>{profile.email}</a>
                   <a href={`tel:${profile.phone.replaceAll(" ", "")}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 ${colors.ring}`}>{profile.phone}</a>
@@ -510,9 +672,9 @@ export default function Portfolio() {
       </main>
 
       {/* ✨ MODIFIÉ : Footer plus fun */}
-      <footer className="border-t bg-white/60 py-8">
-        <div className="mx-auto max-w-6xl px-4 text-center text-sm text-zinc-700">
-          <div>Fait avec ❤️, React et Tailwind CSS.</div>
+      <footer className="border-t bg-white/60 dark:bg-slate-900/60 py-8">
+        <div className="mx-auto max-w-6xl px-4 text-center text-sm text-zinc-700 dark:text-slate-300">
+          <div>Fait avec du café, React et Tailwind CSS.</div>
           <div className="mt-1">© {year} {profile.name}. Tous droits réservés.</div>
         </div>
       </footer>
