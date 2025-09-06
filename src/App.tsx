@@ -158,7 +158,7 @@ const navLinks = [
 // --- UI Components ---
 
 function Badge({ children }: { children: React.ReactNode }) {
-  return <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 text-xs font-medium tracking-wide text-zinc-900 ring-1 ring-inset ring-zinc-200">{children}</span>;
+  return <span className="inline-flex items-center rounded-full bg-white/70 px-2.5 py-1 text-xs font-medium tracking-wide text-zinc-900 ring-1 ring-inset ring-zinc-200 dark:ring-slate-700">{children}</span>;
 }
 
 function Pill({ children }: { children: React.ReactNode }) {
@@ -188,9 +188,9 @@ function TechCircle({ name }: { name: string }) {
 function FilterBar({ techs, active, onToggle, onReset }: { techs: string[]; active: Set<string>; onToggle: (t: string) => void; onReset: () => void; }) {
   return (
     <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
-      <button onClick={onReset} className="btn-hover rounded-full bg-white px-3 py-1 text-sm ring-1 ring-zinc-200">Tout</button>
+      <button onClick={onReset} className="btn-hover rounded-full bg-white px-3 py-1 text-sm ring-1 ring-zinc-200 dark:ring-slate-700">Tout</button>
       {techs.map((t) => (
-        <button key={t} onClick={() => onToggle(t)} className={`btn-hover rounded-full px-3 py-1 text-sm ring-1 ${active.has(t) ? "bg-zinc-900 text-white ring-zinc-900" : "bg-white ring-zinc-200"}`} title={`Filtrer: ${t}`}>{t}</button>
+        <button key={t} onClick={() => onToggle(t)} className={`btn-hover rounded-full px-3 py-1 text-sm ring-1 ${active.has(t) ? "bg-zinc-900 text-white ring-zinc-900" : "bg-white ring-zinc-200 dark:ring-slate-700"}`} title={`Filtrer: ${t}`}>{t}</button>
       ))}
     </div>
   );
@@ -198,7 +198,7 @@ function FilterBar({ techs, active, onToggle, onReset }: { techs: string[]; acti
 
 function ProjectCard({ p, onOpen }: { p: Project; onOpen: (images: string[], index?: number) => void; }) {
   return (
-    <motion.article className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-zinc-200" initial={{ y: 16, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }} viewport={{ once: true }} whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(0,0,0,0.08)" }}>
+    <motion.article className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-zinc-200 dark:ring-slate-700" initial={{ y: 16, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeOut" }} viewport={{ once: true }} whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(0,0,0,0.08)" }}>
       <div className="relative cursor-pointer" onClick={() => onOpen(p.gallery?.length ? p.gallery : p.cover ? [p.cover] : [], 0)}>
         <div className="aspect-video w-full bg-gradient-to-br from-zinc-100 to-zinc-50">{p.cover ? <img src={p.cover} alt={p.name} className="h-full w-full object-cover" /> : null}</div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-black/0" />
@@ -247,7 +247,7 @@ function useCounter(target: number, duration = 1400) {
 
 function Stat({ label, value, suffix = "+" }: { label: string; value: number; suffix?: string }) {
   const n = useCounter(value);
-  return <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200"><div className="text-3xl font-extrabold">{n}{suffix}</div><div className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{label}</div></div>;
+  return <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200 dark:ring-slate-700"><div className="text-3xl font-extrabold">{n}{suffix}</div><div className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{label}</div></div>;
 }
 
 function Progress({ value }: { value: number }) {
@@ -255,7 +255,7 @@ function Progress({ value }: { value: number }) {
 }
 
 function RoadmapItem({ title, detail, tag }: { title: string; detail?: string; tag?: string; }) {
-  return <li className="rounded-xl bg-white/70 p-3 ring-1 ring-zinc-200"><div className="flex items-center justify-between gap-3"><span className="font-medium">{title}</span>{tag && <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs font-semibold text-white">{tag}</span>}</div>{detail && <p className="mt-1 text-xs text-zinc-600 dark:text-slate-400">{detail}</p>}</li>;
+  return <li className="rounded-xl bg-white/70 p-3 ring-1 ring-zinc-200 dark:ring-slate-700"><div className="flex items-center justify-between gap-3"><span className="font-medium">{title}</span>{tag && <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs font-semibold text-white">{tag}</span>}</div>{detail && <p className="mt-1 text-xs text-zinc-600 dark:text-slate-400">{detail}</p>}</li>;
 }
 
 const FORMSPREE_ID = ""; // ← Mettre l'ID Formspree ici.
@@ -324,7 +324,7 @@ function ThemeToggle({ theme, toggle }: { theme: "light" | "dark"; toggle: () =>
     <button
       onClick={toggle}
       aria-label="Basculer le thème"
-      className="btn-hover rounded-full bg-white/80 px-3 py-2 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"
+      className="btn-hover rounded-full bg-white/80 px-3 py-2 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700"
       title={theme === "dark" ? "Mode clair" : "Mode sombre"}
     >
       {theme === "dark" ? <FiSun /> : <FiMoon />}
@@ -403,7 +403,7 @@ export default function Portfolio() {
             {/* Hamburger (affiché partout pour être cohérent) */}
             <button
               onClick={() => setNavOpen(true)}
-              className="btn-hover rounded-full bg-white/80 p-2 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700 md:hidden"
+              className="btn-hover rounded-full bg-white/80 p-2 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700 md:hidden"
               aria-label="Ouvrir le menu"
             >
               <FiMenu />
@@ -422,7 +422,7 @@ export default function Portfolio() {
               className="md:hidden"
             >
               <div className="mx-auto max-w-6xl px-4 pb-3">
-                <div className="rounded-xl bg-white/90 p-3 ring-1 ring-zinc-200 backdrop-blur dark:bg-slate-900/80 dark:ring-slate-700">
+                <div className="rounded-xl bg-white/90 p-3 ring-1 ring-zinc-200 dark:ring-slate-700 backdrop-blur dark:bg-slate-900/80 dark:ring-slate-700">
                   <div className="mb-2 flex items-center justify-between">
                     <button
                       onClick={() => setNavOpen(false)}
@@ -468,7 +468,7 @@ export default function Portfolio() {
         <section id="top" className="relative overflow-hidden">
           <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2">
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs ring-1 ring-zinc-200">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs ring-1 ring-zinc-200 dark:ring-slate-700">
                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span></span>
                 À l'écoute d'opportunités
               </div>
@@ -478,13 +478,13 @@ export default function Portfolio() {
 
               {/* ✨ MODIFIÉ : Liens avec icônes */}
               <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-                <a href={`mailto:${profile.email}`} className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 ${colors.ring}`}>{profile.email}</a>
+                <a href={`mailto:${profile.email}`} className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring}`}>{profile.email}</a>
                 <div className="flex items-center gap-3">
                   <a
                     href={profile.linkedin}
                     aria-label="LinkedIn"
                     title="LinkedIn"
-                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 ${colors.ring} inline-flex items-center gap-2`}
+                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring} inline-flex items-center gap-2`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -495,7 +495,7 @@ export default function Portfolio() {
                     href={profile.github}
                     aria-label="GitHub"
                     title="GitHub"
-                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 ${colors.ring} inline-flex items-center gap-2`}
+                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring} inline-flex items-center gap-2`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -506,7 +506,7 @@ export default function Portfolio() {
                     href={profile.medium}
                     aria-label="Medium"
                     title="Medium"
-                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 ${colors.ring} inline-flex items-center gap-2`}
+                    className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring} inline-flex items-center gap-2`}
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -521,10 +521,10 @@ export default function Portfolio() {
                   href="#projects" 
                   className={`btn-hover rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-5 py-2.5 font-semibold text-white shadow-sm hover:opacity-95`}>Voir mes projets✨
                 </a>
-                <a href="#contact" className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white`}>Me contacter</a>
+                <a href="#contact" className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:ring-slate-700 hover:bg-white`}>Me contacter</a>
               </div>
             </div>
-            <div className="relative"><div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 dark:bg-slate-900/60 shadow-xl ring-1 ring-zinc-200"><img src={heroPhoto} alt="Ange Francine Forkou" className="h-full w-full object-cover" /></div><div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" /></div>
+            <div className="relative"><div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 dark:bg-slate-900/60 shadow-xl ring-1 ring-zinc-200 dark:ring-slate-700"><img src={heroPhoto} alt="Ange Francine Forkou" className="h-full w-full object-cover" /></div><div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" /></div>
           </div>
         </section>
 
@@ -540,7 +540,7 @@ export default function Portfolio() {
         
         <Section id="now" title="Dans Mon Radar Actuel 🔭" subtitle="Mes explorations du moment, ce que j'apprends et les prochaines étapes.">
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Alternance — CNAF</h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">Tableau de bord des réclamations · 2024—2025</p>
               <ul className="mt-3 list-disc pl-5 text-sm text-zinc-800">
@@ -549,7 +549,7 @@ export default function Portfolio() {
                 <li>Suivi SLA, typologies & délais de traitement</li>
               </ul>
             </div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Auto-formation</h3>
               <div className="mt-4 space-y-3">
                 <div><div className="mb-1 flex items-center justify-between text-xs"><span>Databricks Unity Catalog</span><span>45%</span></div><Progress value={45} /></div>
@@ -557,7 +557,7 @@ export default function Portfolio() {
                 <div><div className="mb-1 flex items-center justify-between text-xs"><span>Dataiku (Core → Advanced)</span><span>60%</span></div><Progress value={60} /></div>
               </div>
             </div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
               <h3 className="text-lg font-semibold">Roadmap 2025</h3>
               <ul className="mt-4 space-y-2">
                 <RoadmapItem title="Optimiser un pipeline Spark (cost & perf)" tag="Q3" detail="Benchmark + cache + AQE" />
@@ -570,16 +570,16 @@ export default function Portfolio() {
 
         <Section id="about" title="Au-delà du Code 👩‍💻" subtitle="Un peu plus sur ma personnalité, mes atouts et mes centres d'intérêt.">
           <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Langues</h3><ul className="mt-3 space-y-2 text-sm">{profile.languages.map((l) => <li key={l.name} className="flex items-start gap-2"><span className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo}`} /><span><span className="font-medium">{l.name}</span> — {l.level}</span></li>)}</ul></div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Atouts</h3><div className="mt-3 flex flex-wrap gap-2">{profile.softSkills.map((s) => <Badge key={s}>{s}</Badge>)}</div></div>
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Centres d’intérêt</h3><ul className="mt-3 list-inside list-disc text-sm">{profile.interests.map((it) => <li key={it}>{it}</li>)}</ul></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Langues</h3><ul className="mt-3 space-y-2 text-sm">{profile.languages.map((l) => <li key={l.name} className="flex items-start gap-2"><span className={`mt-1 h-1.5 w-1.5 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo}`} /><span><span className="font-medium">{l.name}</span> — {l.level}</span></li>)}</ul></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Atouts</h3><div className="mt-3 flex flex-wrap gap-2">{profile.softSkills.map((s) => <Badge key={s}>{s}</Badge>)}</div></div>
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700"><h3 className="font-semibold">Centres d’intérêt</h3><ul className="mt-3 list-inside list-disc text-sm">{profile.interests.map((it) => <li key={it}>{it}</li>)}</ul></div>
           </div>
         </Section>
 
         <Section id="experience" title="Mon Parcours Professionnel 💼" subtitle="Les étapes clés et les missions qui ont façonné mon expertise.">
           <div className="space-y-6">
             {experiences.map((exp) => (
-              <article key={exp.title} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+              <article key={exp.title} className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
                 <div className="flex flex-wrap items-center justify-between gap-2"><h3 className="text-lg font-semibold">{exp.title} — <span className="text-zinc-700 dark:text-slate-300">{exp.company}</span></h3><span className="text-sm text-zinc-600 dark:text-slate-400">{exp.period}</span></div>
                 <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{exp.location}</p>
                 <ul className="mt-3 list-disc pl-5 text-sm text-zinc-800">{exp.bullets.map((b, i) => <li key={i}>{b}</li>)}</ul>
@@ -596,7 +596,7 @@ export default function Portfolio() {
           </div>
           {filteredProjects.length > 3 && (
             <div className="mt-10 text-center">
-              <button onClick={() => setShowAllProjects(!showAllProjects)} className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white`}>
+              <button onClick={() => setShowAllProjects(!showAllProjects)} className={`btn-hover rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:ring-slate-700 hover:bg-white`}>
                 {showAllProjects ? "Voir moins de projets" : "Voir plus de projets"}
               </button>
             </div>
@@ -606,8 +606,8 @@ export default function Portfolio() {
         {lb && <Lightbox images={lb.images} index={lb.index} onClose={closeLb} onPrev={prevLb} onNext={nextLb} />}
 
         <Section id="skills" title="Ma Boîte à Outils Digitale 🛠️" subtitle="Les technologies que je maîtrise pour donner vie aux données.">
-          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
-            <div className="flex flex-wrap border-b border-zinc-200">
+          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="flex flex-wrap border-b border-zinc-200 dark:border-slate-800">
               {skills.map((group) => (
                 <button key={group.category} onClick={() => setActiveSkillTab(group.category)} className={`px-4 py-2 text-sm font-medium transition-colors ${activeSkillTab === group.category ? `border-b-2 border-violet-600 text-violet-600` : `border-b-2 border-transparent text-zinc-600 dark:text-slate-400 hover:text-zinc-900`}`}>
                   {group.category}
@@ -616,14 +616,14 @@ export default function Portfolio() {
             </div>
             <AnimatePresence mode="wait">
               <motion.div key={activeSkillTab} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }} className="mt-4 flex flex-wrap items-center gap-3 text-sm">
-                {skills.find(s => s.category === activeSkillTab)?.items.map((name) => techLogos[name] ? <span key={name} className="inline-flex items-center gap-2 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-200"><img src={techLogos[name]} alt={name} className="h-5 w-5 object-contain" /><span>{name}</span></span> : <Badge key={name}>{name}</Badge>)}
+                {skills.find(s => s.category === activeSkillTab)?.items.map((name) => techLogos[name] ? <span key={name} className="inline-flex items-center gap-2 rounded-full bg-white px-2.5 py-1 ring-1 ring-zinc-200 dark:ring-slate-700"><img src={techLogos[name]} alt={name} className="h-5 w-5 object-contain" /><span>{name}</span></span> : <Badge key={name}>{name}</Badge>)}
               </motion.div>
             </AnimatePresence>
           </div>
         </Section>
 
         <Section id="certifications" title="Apprentissage Continu 🎓" subtitle="La preuve de ma curiosité et de ma volonté de toujours monter en compétence.">
-            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+            <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700 dark:bg-slate-900/70 dark:ring-slate-700">
               <ul className="divide-y divide-zinc-200">
                 {certifications.map((c) => (
                   <li key={c.name} className="flex flex-wrap items-center justify-between gap-4 py-4">
@@ -639,7 +639,7 @@ export default function Portfolio() {
         </Section>
 
         <Section id="education" title="Mes Fondations Académiques 🏛️" subtitle="Le parcours qui a initié ma passion pour la tech et la data.">
-          <ol className="relative ml-3 space-y-6 border-l border-zinc-200 pl-6">
+          <ol className="relative ml-3 space-y-6 border-l border-zinc-200 dark:border-slate-800 pl-6">
             {education.map((e) => (
               <li key={e.school}>
                 <span className={`absolute -left-[9px] mt-1 block h-4 w-4 rounded-full bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} ring-8 ring-white`} />
@@ -653,17 +653,17 @@ export default function Portfolio() {
         </Section>
 
         <Section id="contact" title="Entrons en Contact ! 👋" subtitle="Une idée, un projet, ou juste envie de parler data ? N'hésitez pas !">
-          <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200">
+          <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 dark:ring-slate-700">
             <div className="grid gap-8 md:grid-cols-2">
               <div>
                 <h3 className="text-lg font-semibold">Discutons de vos projets</h3>
                 <p className="mt-2 max-w-prose text-sm text-zinc-700 dark:text-slate-300">J'adore collaborer et échanger sur des sujets data/BI. Que ce soit pour une opportunité, une question technique ou simplement pour réseauter, ma porte est toujours ouverte.</p>
                 <div className="mt-4 flex flex-col items-start gap-3 text-sm">
-                  <a href={`mailto:${profile.email}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 ${colors.ring}`}>{profile.email}</a>
-                  <a href={`tel:${profile.phone.replaceAll(" ", "")}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 ${colors.ring}`}>{profile.phone}</a>
+                  <a href={`mailto:${profile.email}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring}`}>{profile.email}</a>
+                  <a href={`tel:${profile.phone.replaceAll(" ", "")}`} className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring}`}>{profile.phone}</a>
                 </div>
               </div>
-              <div className="rounded-xl bg-white p-4 ring-1 ring-zinc-200">
+              <div className="rounded-xl bg-white p-4 ring-1 ring-zinc-200 dark:ring-slate-700">
                 <ContactFormReal />
               </div>
             </div>
