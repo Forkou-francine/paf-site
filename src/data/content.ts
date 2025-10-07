@@ -62,7 +62,7 @@ export const colors = {
 };
 
 export const profile = {
-  name: "Ange Francine FORKOU",
+  name: "Ange-Francine FORKOU",
   title: "Data Engineer · Développeuse BI",
   tagline: "Exploratrice de données et créatrice de pipelines intelligents.",
   bio: "Hello ! Je suis Ange, et je transforme le chaos des données brutes en insights clairs et percutants. Ce portfolio est ma vitrine numérique.",
