@@ -152,6 +152,19 @@ export const projects: Project[] = [
     link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
   },
   {
+    name: "Analyse de données e-commerce",
+    org: "EPSI – M1",
+    period: "2024 — 2025",
+    bullets: [
+      "Ingestion & préparation (Hadoop · Spark · MapReduce).",
+      "Exploration & KPI de ventes.",
+      "Recommandations marketing.",
+    ],
+    cover: schoolProjectOne,
+    stack: ["Hadoop", "Spark", "MapReduce"],
+    link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+  },
+  {
     name: "Pipeline Big Data pour un labo",
     org: "EPSI – M1",
     period: "2024 — 2025",

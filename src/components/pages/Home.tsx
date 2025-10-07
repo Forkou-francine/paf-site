@@ -1,6 +1,7 @@
 import Section from "../ui/Section";
 import { profile, projects, colors } from "../../data/content";
 import Badge from "../ui/Badge"; 
+import SocialLinks from "../ui/SocialLinks";
 import { Link } from "react-router-dom";
 
 export default function Home(){
@@ -27,6 +28,7 @@ export default function Home(){
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">{profile.title}</h1>
             <p className="mt-2 text-lg text-zinc-600 dark:text-slate-400">{profile.tagline}</p>
             <p className="mt-4 max-w-prose text-zinc-700 dark:text-slate-300">{profile.bio}</p>
+            <SocialLinks withEmail />
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/projects" className={`rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-5 py-2.5 font-semibold text-white shadow-sm`}>Voir mes projets ✨</Link>
               <Link to="/contact" className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:ring-slate-700">Me contacter</Link>
@@ -34,8 +36,11 @@ export default function Home(){
           </div>
           <div className="relative">
             <div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 dark:bg-slate-900/60 shadow-xl ring-1 ring-zinc-200 dark:ring-slate-700">
-              <img src={profile.heroPhoto} alt={profile.name} className="h-full w-full object-cover" />
+              <img src={profile.heroPhoto} 
+              alt={profile.name} 
+              className="h-full w-full object-cover" />
             </div>
+            <div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" />
           </div>
         </div>
       </section>
@@ -48,7 +53,7 @@ export default function Home(){
         </div>
       </Section>
 
-      <Section title="À propos">
+      <Section title="À propos de moi">
             <div className="grid gap-6 md:grid-cols-3">
               <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700">
                 <h3 className="font-semibold">Langues</h3>
