@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { colors } from "../../constants/colors";
 import TechCircle from "./TechCircle";
-import type { Project } from "../../types";
+import type { Project } from "../../types/types";
 
 export default function ProjectCard({ p, onOpen }:{
   p: Project; onOpen: (images: string[], index?: number) => void;
