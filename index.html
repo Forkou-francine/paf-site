@@ -1,20 +1,44 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/6.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Portfolio d'Ange-Francine FORKOU, Data Engineer et developpeuse BI specialisee dans l'orchestration de pipelines et la valorisation de la donnee." />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="La Vitrine de Francine - Data Engineer & Developpeuse BI" />
+    <meta property="og:description" content="Decouvrez le parcours, les projets et les expertises data d'Ange-Francine FORKOU." />
+    <meta property="og:url" content="https://francineforkou.vercel.app/" />
+    <meta property="og:image" content="https://francineforkou.vercel.app/ange.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="La Vitrine de Francine - Data Engineer & Developpeuse BI" />
+    <meta name="twitter:description" content="Portfolio d'Ange-Francine FORKOU, specialiste data/BI." />
+    <meta name="twitter:image" content="https://francineforkou.vercel.app/ange.svg" />
+    <link rel="canonical" href="https://francineforkou.vercel.app/" />
     <title>La Vitrine de Francine</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      (function() {
-        const saved = localStorage.getItem("theme");
+      (function () {
+        const storageKey = "theme-mode";
+        const saved = localStorage.getItem(storageKey);
+        const accepted = saved === "light" || saved === "dark" ? saved : "system";
         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const theme = saved || (prefersDark ? "dark" : "light");
-        if (theme === "dark") document.documentElement.classList.add("dark");
+        const resolved =
+          accepted === "dark"
+            ? "dark"
+            : accepted === "light"
+              ? "light"
+              : prefersDark
+                ? "dark"
+                : "light";
+        if (resolved === "dark") {
+          document.documentElement.classList.add("dark");
+        }
       })();
     </script>
   </body>

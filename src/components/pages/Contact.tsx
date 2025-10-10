@@ -72,19 +72,58 @@ function ContactForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       <div className="grid gap-3 md:grid-cols-2">
-        <input name="name" required placeholder="Votre nom" className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`} />
-        <input name="email" required type="email" placeholder="Votre email" className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`} />
+        <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700 dark:text-slate-200" htmlFor="contact-name">
+          Nom
+          <input
+            id="contact-name"
+            name="name"
+            required
+            placeholder="Votre nom"
+            className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+          />
+        </label>
+        <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700 dark:text-slate-200" htmlFor="contact-email">
+          Email
+          <input
+            id="contact-email"
+            name="email"
+            required
+            type="email"
+            placeholder="Votre email"
+            className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+          />
+        </label>
       </div>
-      <input name="subject" placeholder="Sujet" className={`h-10 w-full rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`} />
-      <textarea name="message" required rows={4} placeholder="Votre message..." className={`w-full rounded-md border p-3 outline-none focus:ring-2 ${colors.ring}`} />
+      <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700 dark:text-slate-200" htmlFor="contact-subject">
+        Sujet (optionnel)
+        <input
+          id="contact-subject"
+          name="subject"
+          placeholder="Sujet"
+          className={`h-10 w-full rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+        />
+      </label>
+      <label className="flex flex-col gap-1 text-sm font-medium text-zinc-700 dark:text-slate-200" htmlFor="contact-message">
+        Message
+        <textarea
+          id="contact-message"
+          name="message"
+          required
+          rows={4}
+          placeholder="Votre message..."
+          className={`w-full rounded-md border p-3 outline-none focus:ring-2 ${colors.ring}`}
+        />
+      </label>
       <button type="submit" disabled={status === "sending"} className={`w-full rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-4 py-2 font-semibold text-white shadow-sm disabled:opacity-60`}>
         {status === "sending" ? "Envoi..." : "Envoyer"}
       </button>
-      {status !== "idle" && (
-        <p className={`text-sm ${status === "ok" ? "text-emerald-600" : status === "error" ? "text-red-600" : "text-zinc-500 dark:text-slate-500"}`}>
-          {msg}
-        </p>
-      )}
+      <p
+        role="status"
+        aria-live="polite"
+        className={`text-sm ${status === "ok" ? "text-emerald-600" : status === "error" ? "text-red-600" : "text-zinc-500 dark:text-slate-500"}`}
+      >
+        {status !== "idle" ? msg : "\u00a0"}
+      </p>
     </form>
   );
 }

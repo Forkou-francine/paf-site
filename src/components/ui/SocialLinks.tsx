@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub, FaMedium, FaMailchimp } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaMedium } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
 import { profile, colors } from "../../data/content";
 
@@ -11,6 +11,7 @@ export default function SocialLinks({ withEmail = true, className = "" }: Props)
         <a
           href={`mailto:${profile.email}`}
           className={`rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 inline-flex items-center ${colors.ring}`}
+          aria-label={`Envoyer un email a ${profile.name}`}
         >
            <FiMail className="h-4 w-4 text-zinc-900 dark:text-white" />
         </a>

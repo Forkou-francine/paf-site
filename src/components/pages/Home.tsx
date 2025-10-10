@@ -36,9 +36,15 @@ export default function Home(){
           </div>
           <div className="relative">
             <div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 dark:bg-slate-900/60 shadow-xl ring-1 ring-zinc-200 dark:ring-slate-700">
-              <img src={profile.heroPhoto} 
-              alt={profile.name} 
-              className="h-full w-full object-cover" />
+              <img
+                src={profile.heroPhoto}
+                alt={`Portrait de ${profile.name}`}
+                className="h-full w-full object-cover"
+                decoding="async"
+                loading="eager"
+                width={768}
+                height={768}
+              />
             </div>
             <div className="pointer-events-none absolute -right-5 -top-5 hidden h-24 w-24 rotate-6 rounded-2xl bg-gradient-to-br from-fuchsia-300/70 to-indigo-300/70 backdrop-blur md:block" />
           </div>
