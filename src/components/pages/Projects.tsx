@@ -1,63 +1,113 @@
 import Section from "../ui/Section";
 import { useMemo, useState } from "react";
-import { projects } from "../../data/content";
 import FilterBar from "../projects/FilterBar";
 import ProjectCard from "../projects/ProjectCard";
 import Lightbox from "../projects/LightBox";
+import { usePortfolioContent } from "../../hooks/usePortfolioContent";
 
+export default function Projects() {
+  const { projects, labels } = usePortfolioContent();
 
-export default function Projects(){
-  const allTechs = useMemo(()=>Array.from(new Set(projects.flatMap(p=>p.stack))).sort(),[]);
+  const allTechs = useMemo(
+    () => Array.from(new Set(projects.flatMap((p) => p.stack))).sort(),
+    [projects],
+  );
+
   const [active, setActive] = useState<Set<string>>(new Set());
   const [showAll, setShowAll] = useState(false);
-  const toggle = (t:string)=>
-    setActive(prev=>{
-      const n=new Set(prev); 
-      n.has(t)?n.delete(t):n.add(t); 
-      return n;
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+
+  const toggle = (tech: string) =>
+    setActive((prev) => {
+      const next = new Set(prev);
+      next.has(tech) ? next.delete(tech) : next.add(tech);
+      return next;
     });
-  const reset = ()=>setActive(new Set());
+
+  const reset = () => setActive(new Set());
+
   const filtered = useMemo(() => {
     if (active.size === 0) return projects;
-    return projects.filter(p => p.stack.some(t => active.has(t)))
-  }, [active]);
-  // const filtered = active.size? projects.filter(p=>p.stack.some(s=>active.has(s))) : projects;
+    return projects.filter((project) => project.stack.some((tech) => active.has(tech)));
+  }, [active, projects]);
+
   const displayed = showAll ? filtered : filtered.slice(0, 3);
-  const [lb, setLb] = useState<{images:string[]; index:number}|null>(null);
-  const open = (images:string[], index=0)=> images.length && setLb({images,index});
-  const close=()=>setLb(null);
-  const prev =()=> lb && setLb({...lb, index:(lb.index-1+lb.images.length)%lb.images.length});
-  const next =()=> lb && setLb({...lb, index:(lb.index+1)%lb.images.length});
+
+  const open = (images: string[], index = 0) => {
+    if (!images.length) return;
+    setLightbox({ images, index });
+  };
+  const close = () => setLightbox(null);
+  const handlePrev = () =>
+    setLightbox((current) => {
+      if (!current) return current;
+      const { images, index } = current;
+      return {
+        images,
+        index: (index - 1 + images.length) % images.length,
+      };
+    });
+  const handleNext = () =>
+    setLightbox((current) => {
+      if (!current) return current;
+      const { images, index } = current;
+      return {
+        images,
+        index: (index + 1) % images.length,
+      };
+    });
 
   return (
     <>
-      <Section title="Projets" subtitle="Une sélection de mes réalisations.">
-        <FilterBar techs={allTechs} active={active} onToggle={toggle} onReset={reset} />
+      <Section title={labels.projects.title} subtitle={labels.projects.subtitle}>
+        <FilterBar
+          techs={allTechs}
+          active={active}
+          onToggle={toggle}
+          onReset={reset}
+          allLabel={labels.filterBar.all}
+          getTooltip={(tech) => labels.filterBar.tooltip.replace("{{tech}}", tech)}
+          ariaLabel={labels.projects.title}
+        />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {displayed.map(p=>(
-            <ProjectCard key={p.name} p={p} onOpen={open} />
-            ))}
+          {displayed.map((project) => (
+            <ProjectCard
+              key={project.name}
+              project={project}
+              labels={labels.projectCard}
+              onOpen={open}
+            />
+          ))}
         </div>
 
         {filtered.length > 3 && (
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => setShowAll(s => !s)}
-            className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:ring-slate-700 hover:bg-white"
-          >
-            {showAll ? "Voir moins de projets" : "Voir plus de projets"}
-          </button>
-        </div>
-      )}
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              onClick={() => setShowAll((value) => !value)}
+              className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white dark:ring-slate-700"
+            >
+              {showAll ? labels.projects.showLess : labels.projects.showMore}
+            </button>
+          </div>
+        )}
 
-      {/* Message si aucun projet ne correspond aux filtres */}
-      {filtered.length === 0 && (
-        <div className="mt-4 rounded-2xl bg-white/80 p-6 text-sm ring-1 ring-zinc-200 dark:ring-slate-700">
-          Aucun projet ne correspond aux filtres sélectionnés.
-        </div>
-      )}
+        {filtered.length === 0 && (
+          <div className="mt-4 rounded-2xl bg-white/80 p-6 text-sm ring-1 ring-zinc-200 dark:ring-slate-700">
+            {labels.projects.empty}
+          </div>
+        )}
       </Section>
-      {lb && <Lightbox images={lb.images} index={lb.index} onClose={close} onPrev={prev} onNext={next} />}
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          onClose={close}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          labels={labels.projects.lightbox}
+        />
+      )}
     </>
   );
 }

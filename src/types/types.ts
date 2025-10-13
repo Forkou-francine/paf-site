@@ -4,6 +4,7 @@ export type Profile = {
   linkedin: string; github: string; medium: string; cvUrl?: string;
   languages: { name: string; level: string }[];
   softSkills: string[]; interests: string[];
+  heroPhoto: string;
 };
 
 export type Experience = {
@@ -18,7 +19,15 @@ export type Education = {
 export type Cert = { name: string; issuer: string; year?: string; id?: string; link?: string; image?: string };
 
 export type Project = {
-  name: string; org: string; period: string;
-  bullets: string[]; cover?: string; gallery?: string[];
-  stack: string[]; link?: string;
+  name: string;
+  org: string;
+  period: string;
+  role: string;
+  summary: string;
+  impact: string;
+  bullets: string[];
+  cover?: string;
+  gallery?: string[];
+  stack: string[];
+  link?: string;
 };
