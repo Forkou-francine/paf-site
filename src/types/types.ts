@@ -24,7 +24,6 @@ export type Project = {
   period: string;
   role: string;
   summary: string;
-  impact: string;
   bullets: string[];
   cover?: string;
   gallery?: string[];

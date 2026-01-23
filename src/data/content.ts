@@ -167,8 +167,8 @@ const frenchContent: PortfolioContent = {
       { name: "Anglais", level: "C1+ (TOEIC 950/990, BULATS 98/100)" },
     ],
     softSkills: [
-      "Pédagogie avec les métiers",
-      "Culture produit data",
+      "Bon relationnel",
+      "Esprit d'analyse",
       "Leadership bienveillant",
       "Autonomie et sens du delivery",
     ],
@@ -181,10 +181,10 @@ const frenchContent: PortfolioContent = {
       title: "Alternance - Data Engineer / Développeuse applicative BI",
       period: "Sept. 2024 - Présent",
       bullets: [
-        "Je redessine le tableau de bord national des réclamations avec Databricks (Python, Spark) et Power BI.",
-        "J’automatise les transformations et je publie des indicateurs SLA consommés par 15 directions territoriales.",
-        "J’épaule les analystes en optimisant notebooks et requêtes, tout en pilotant le backlog via Azure DevOps.",
-        "Je sécurise le run avec des pipelines CI/CD et une gouvernance Git partagée.",
+        "Je reconçois le tableau de bord national des réclamations avec Databricks (Python, Spark) et Power BI.",
+        "J’automatise les transformations avec des jobs CI/CD et je publie des indicateurs clés consommés par les métiers de la CAF.",
+        "J’épaule les analystes en optimisant des notebooks et des requêtes",
+        "Je travaille sur un POC d'implémentation de l'interface Databricks One dans l'environnement CNAF-métiers.",
       ],
       tech: ["Databricks", "Python", "Spark", "Power BI", "Azure", "Azure DevOps", "Git"],
     },
@@ -194,7 +194,7 @@ const frenchContent: PortfolioContent = {
       title: "Stage - Ingénieure Logiciel",
       period: "Fév. 2024 - Août 2024",
       bullets: [
-        "Je co-construis un portail de visualisation réseau (FastAPI + Vue.js) pour suivre l’état des fibres optiques.",
+        "Je co-construis un portail de visualisation de données de réseaux (FastAPI + Vue.js) pour suivre l’état des fibres optiques.",
         "Je développe des APIs Python et des jobs Kubernetes afin d’injecter les données dans MongoDB.",
         "Je pilote la qualité logicielle via GitLab CI, SonarQube et des revues de code quotidiennes.",
       ],
@@ -211,7 +211,7 @@ const frenchContent: PortfolioContent = {
       school: "IUSJ - UTT",
       degree: "Diplôme d’ingénieur - Développement logiciel",
       period: "2019 - 2024",
-      details: "Architecture SI, data viz (Power BI)",
+      details: "Architecture des SI, Modélisation et Data viz (Power BI)",
     },
     {
       school: "UTBM, Belfort",
@@ -250,12 +250,9 @@ const frenchContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Je refonds le suivi national des réclamations en redéfinissant le modèle de données, les KPIs et les parcours utilisateurs pour les directions territoriales.",
-      impact:
-        "Impact : 30 % de réduction du temps de qualification des réclamations et une vision alignée des SLA pour 15 directions territoriales.",
       bullets: [
         "Je reconstruis le data mart sur Delta Lake et j’automatise les jobs Databricks.",
         "Je modélise et publie un espace Power BI gouverné avec des mesures DAX réutilisables.",
-        "Je livre un runbook d’exploitation et des alertes SLA intégrées à Azure DevOps.",
       ],
       cover: cnafDashboard,
       gallery: [cnafDashboard, cnafAnalyse],
@@ -269,8 +266,6 @@ const frenchContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Nous construisons un data lake Hadoop pour comprendre les ventes et proposer des leviers marketing à partir de jeux de données massifs.",
-      impact:
-        "Impact : +18 % de marge potentielle identifiée sur les paniers types grâce à la segmentation des clients et à la détection des produits en tension.",
       bullets: [
         "Je pilote l’ingestion et la préparation des données (Hadoop, Spark, MapReduce).",
         "Je formalise des KPI ventes et des recommandations marketing dans un playbook.",
@@ -287,8 +282,6 @@ const frenchContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Je pilote la création d’un pipeline bout en bout pour consolider la R&D d’un laboratoire, de l’ingestion à la visualisation Looker Studio.",
-      impact:
-        "Impact : mise à jour quotidienne des analyses R&D et disponibilité des données pour quatre squads produit grâce à une architecture documentée.",
       bullets: [
         "Je dessine l’orchestration Airflow et les transformations dbt/Spark.",
         "Je modélise la base PostgreSQL et je sécurise les exports Looker Studio.",
@@ -540,8 +533,6 @@ const englishContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Redesigned the complaints monitoring platform, refreshing the data model, KPIs, and user journeys for territorial teams.",
-      impact:
-        "Impact: 30% faster complaint qualification and a unified SLA view across 15 regional directorates.",
       bullets: [
         "Rebuilt the data mart on Delta Lake and automated Databricks jobs.",
         "Modelled and published a governed Power BI workspace with reusable DAX measures.",
@@ -559,8 +550,6 @@ const englishContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Built an Hadoop-based data lake to understand sales patterns and recommend marketing levers from large datasets.",
-      impact:
-        "Impact: Identified +18% potential margin on typical baskets thanks to customer segmentation and product tension detection.",
       bullets: [
         "Led data ingestion and preparation workflows (Hadoop, Spark, MapReduce).",
         "Formalised sales KPIs and marketing recommendations in a playbook.",
@@ -577,8 +566,6 @@ const englishContent: PortfolioContent = {
       period: "2024 - 2025",
       summary:
         "Led the end-to-end pipeline for a laboratory, from ingestion to Looker Studio dashboards supporting R&D squads.",
-      impact:
-        "Impact: Daily refreshed R&D analytics and reliable data access for four product squads through documented architecture.",
       bullets: [
         "Designed Airflow orchestration and dbt/Spark transformations.",
         "Modelled the PostgreSQL warehouse and secured Looker Studio exports.",
