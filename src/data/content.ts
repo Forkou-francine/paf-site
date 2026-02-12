@@ -1,4 +1,4 @@
-import heroPhoto from "../assets/ange1.jpg";
+import heroPhoto from "../assets/ange3.png";
 import cnafDashboard from "../assets/projects/projet2-cc.png";
 import cnafAnalyse from "../assets/projects/project2.png";
 import schoolProjectOne from "../assets/projects/project1.png";
@@ -160,7 +160,7 @@ const frenchContent: PortfolioContent = {
     linkedin: "https://www.linkedin.com/in/forkou-francine",
     github: "https://github.com/Forkou-francine",
     medium: "https://medium.com/@francineforkou",
-    cvUrl: "https://drive.google.com/file/d/1YsF6baPAIC5nL4vwzLBciB5JSYT6jE_K/view?usp=sharing",
+    cvUrl: "/CV_Data_Francine_FORKOU.pdf",
     heroPhoto,
     languages: [
       { name: "Français", level: "Courant" },
@@ -346,7 +346,6 @@ const frenchContent: PortfolioContent = {
         { to: "/experience", label: "Expériences" },
         { to: "/projects", label: "Projets" },
         { to: "/skills", label: "Compétences" },
-        { to: "/certifications", label: "Certifications" },
         { to: "/education", label: "Formation" },
         { to: "/contact", label: "Contact" },
       ],
@@ -468,7 +467,7 @@ const englishContent: PortfolioContent = {
     linkedin: "https://www.linkedin.com/in/forkou-francine",
     github: "https://github.com/Forkou-francine",
     medium: "https://medium.com/@francineforkou",
-    cvUrl: "https://drive.google.com/file/d/1YsF6baPAIC5nL4vwzLBciB5JSYT6jE_K/view?usp=sharing",
+    cvUrl: "/cv-ange-francine-forkou.pdf",
     heroPhoto,
     languages: [
       { name: "French", level: "Native" },
@@ -633,7 +632,6 @@ const englishContent: PortfolioContent = {
         { to: "/experience", label: "Experience" },
         { to: "/projects", label: "Projects" },
         { to: "/skills", label: "Skills" },
-        { to: "/certifications", label: "Certifications" },
         { to: "/education", label: "Education" },
         { to: "/contact", label: "Contact" },
       ],

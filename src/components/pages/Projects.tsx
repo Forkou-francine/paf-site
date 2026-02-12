@@ -58,7 +58,7 @@ export default function Projects() {
     });
 
   return (
-    <>
+    <div className="bg-zinc-50 dark:bg-slate-950">
       <Section title={labels.projects.title} subtitle={labels.projects.subtitle}>
         <FilterBar
           techs={allTechs}
@@ -85,7 +85,7 @@ export default function Projects() {
             <button
               type="button"
               onClick={() => setShowAll((value) => !value)}
-              className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 hover:bg-white dark:ring-slate-700"
+              className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 transition-colors hover:bg-white dark:bg-slate-800/80 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-700"
             >
               {showAll ? labels.projects.showLess : labels.projects.showMore}
             </button>
@@ -93,7 +93,7 @@ export default function Projects() {
         )}
 
         {filtered.length === 0 && (
-          <div className="mt-4 rounded-2xl bg-white/80 p-6 text-sm ring-1 ring-zinc-200 dark:ring-slate-700">
+          <div className="mt-4 rounded-2xl bg-white/80 p-6 text-sm ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:text-slate-300 dark:ring-slate-700">
             {labels.projects.empty}
           </div>
         )}
@@ -108,6 +108,6 @@ export default function Projects() {
           labels={labels.projects.lightbox}
         />
       )}
-    </>
+    </div>
   );
 }

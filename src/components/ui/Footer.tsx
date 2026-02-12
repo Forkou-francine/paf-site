@@ -1,4 +1,6 @@
 import { usePortfolioContent } from "../../hooks/usePortfolioContent";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { SiMedium } from "react-icons/si";
 
 export default function Footer() {
   const { profile, labels } = usePortfolioContent();
@@ -8,10 +10,48 @@ export default function Footer() {
     .replace("{{name}}", profile.name);
 
   return (
-    <footer className="border-t bg-white/60 py-8 dark:bg-slate-900/60">
-      <div className="mx-auto max-w-6xl px-4 text-center text-sm text-zinc-700 dark:text-slate-300">
-        <div>{labels.footer.madeWith}</div>
-        <div className="mt-1">{rights}</div>
+    <footer className="bg-slate-900 py-6">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 text-sm text-slate-400">
+        <span className="text-xl font-bold text-violet-400">AF.</span>
+        <div className="flex items-center gap-3">
+          {profile.github && (
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+              aria-label="GitHub"
+            >
+              <FiGithub className="h-5 w-5" />
+            </a>
+          )}
+          {profile.linkedin && (
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+              aria-label="LinkedIn"
+            >
+              <FiLinkedin className="h-5 w-5" />
+            </a>
+          )}
+          {profile.medium && (
+            <a
+              href={profile.medium}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+              aria-label="Medium"
+            >
+              <SiMedium className="h-5 w-5" />
+            </a>
+          )}
+        </div>
+        <span>·</span>
+        <span>{labels.footer.madeWith}</span>
+        <span>·</span>
+        <span>{rights}</span>
       </div>
     </footer>
   );

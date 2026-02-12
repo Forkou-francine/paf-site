@@ -30,14 +30,14 @@ export default function Contact() {
             <div className="mt-4 flex flex-col items-start gap-3 text-sm">
               <a
                 href={`mailto:${profile.email}`}
-                className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 dark:bg-slate-900 dark:ring-slate-700 ${colors.ring}`}
+                className={`rounded-xl bg-white px-3 py-2 font-medium text-zinc-900 ring-1 ring-zinc-200 transition-colors hover:bg-zinc-50 dark:bg-slate-900 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-800 ${colors.ring}`}
                 aria-label={`${labels.contact.emailLink} ${profile.name}`}
               >
                 {profile.email}
               </a>
               <a
                 href={`tel:${profile.phone.replaceAll(" ", "")}`}
-                className={`rounded-xl bg-white px-3 py-2 font-medium ring-1 ring-zinc-200 dark:bg-slate-900 dark:ring-slate-700 ${colors.ring}`}
+                className={`rounded-xl bg-white px-3 py-2 font-medium text-zinc-900 ring-1 ring-zinc-200 transition-colors hover:bg-zinc-50 dark:bg-slate-900 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-800 ${colors.ring}`}
                 aria-label={`${labels.contact.phoneLink} ${profile.phone}`}
               >
                 {profile.phone}
@@ -107,7 +107,7 @@ function ContactForm() {
             name="name"
             required
             placeholder={labels.contactForm.name}
-            className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+            className={`h-10 rounded-md border border-zinc-200 bg-white px-3 text-zinc-900 placeholder:text-zinc-400 outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 ${colors.ring}`}
           />
         </label>
         <label
@@ -121,7 +121,7 @@ function ContactForm() {
             required
             type="email"
             placeholder={labels.contactForm.email}
-            className={`h-10 rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+            className={`h-10 rounded-md border border-zinc-200 bg-white px-3 text-zinc-900 placeholder:text-zinc-400 outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 ${colors.ring}`}
           />
         </label>
       </div>
@@ -134,7 +134,7 @@ function ContactForm() {
           id="contact-subject"
           name="subject"
           placeholder={labels.contactForm.subjectPlaceholder}
-          className={`h-10 w-full rounded-md border px-3 outline-none focus:ring-2 ${colors.ring}`}
+          className={`h-10 w-full rounded-md border border-zinc-200 bg-white px-3 text-zinc-900 placeholder:text-zinc-400 outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 ${colors.ring}`}
         />
       </label>
       <label
@@ -148,7 +148,7 @@ function ContactForm() {
           required
           rows={4}
           placeholder={labels.contactForm.messagePlaceholder}
-          className={`w-full rounded-md border p-3 outline-none focus:ring-2 ${colors.ring}`}
+          className={`w-full rounded-md border border-zinc-200 bg-white p-3 text-zinc-900 placeholder:text-zinc-400 outline-none focus:ring-2 focus:ring-offset-1 dark:focus:ring-offset-slate-900 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500 ${colors.ring}`}
         />
       </label>
       <button
