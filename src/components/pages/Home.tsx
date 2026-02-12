@@ -21,11 +21,11 @@ export default function Home() {
       {/* Background gradients */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
         {/* Large purple gradient on the left */}
-        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-400/40 via-fuchsia-300/30 to-transparent blur-3xl" />
+        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-300/25 via-fuchsia-200/15 to-transparent blur-3xl" />
         {/* Soft blue gradient on the right */}
-        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-200/30 via-sky-100/20 to-transparent blur-3xl" />
+        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-sky-50/10 to-transparent blur-3xl" />
         {/* Additional soft purple accent */}
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-300/20 blur-3xl" />
+        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-200/15 blur-3xl" />
       </div>
 
       <section className="relative overflow-hidden">

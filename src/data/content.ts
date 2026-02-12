@@ -1,4 +1,4 @@
-import heroPhoto from "../assets/ange3.png";
+import heroPhoto from "../assets/ange1.jpg";
 import cnafDashboard from "../assets/projects/projet2-cc.png";
 import cnafAnalyse from "../assets/projects/project2.png";
 import schoolProjectOne from "../assets/projects/project1.png";
