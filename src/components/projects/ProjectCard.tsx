@@ -14,7 +14,7 @@ type Props = {
 export default function ProjectCard({ project, labels, onOpen }: Props) {
   return (
     <motion.article
-      className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-zinc-200 dark:ring-slate-700"
+      className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700"
       initial={{ y: 16, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }} viewport={{ once: true }}
       whileHover={{ y: -4, boxShadow: "0 10px 30px rgba(0,0,0,0.08)" }}
@@ -30,7 +30,7 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
         className="group relative block w-full overflow-hidden bg-transparent p-0 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-violet-500"
         aria-label={`${labels.openGallery} ${project.name}`}
       >
-        <div className="aspect-video w-full bg-gradient-to-br from-zinc-100 to-zinc-50">
+        <div className="aspect-video w-full bg-gradient-to-br from-zinc-100 to-zinc-50 dark:from-slate-700 dark:to-slate-800">
           {project.cover ? (
             <img
               src={project.cover}
@@ -76,12 +76,6 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
                 <TechCircle key={tech} name={tech} />
               ))}
             </dd>
-          </div>
-          <div className="md:col-span-2">
-            <dt className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-slate-400">
-              {labels.impactLabel}
-            </dt>
-            <dd className="mt-1 text-sm text-zinc-700 dark:text-slate-300">{project.impact}</dd>
           </div>
         </dl>
 

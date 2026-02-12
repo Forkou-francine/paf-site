@@ -25,7 +25,7 @@ export type SkillGroup = { category: string; intro?: string; items: SkillItem[] 
 
 export type NavItem = { to: string; label: string };
 
-export type HomeMetricKey = "projectCount" | "stackCount" | "pipelineCount";
+export type HomeMetricKey = "cafCount" | "usersCount" | "yearsExp";
 export type HomeMetric = { label: string; valueKey: HomeMetricKey };
 
 export type Labels = {
@@ -73,6 +73,7 @@ export type Labels = {
     roleLabel: string;
     durationLabel: string;
     stackLabel: string;
+    impactLabel: string;
     deliverablesLabel: string;
     viewProject: string;
   };
@@ -89,6 +90,7 @@ export type Labels = {
     subtitle: string;
     empty: string;
     view: string;
+    inProgress: string;
   };
   education: {
     title: string;
@@ -142,10 +144,15 @@ export type PortfolioContent = {
   experiences: Experience[];
   education: Education[];
   certifications: Cert[];
+  certificationsInProgress: Cert[];
   projects: Project[];
   skills: SkillGroup[];
   labels: Labels;
-  pipelinesCount: number;
+  metricsValues: {
+    cafCount: number;
+    usersCount: string;
+    yearsExp: string;
+  };
 };
 
 const frenchContent: PortfolioContent = {
@@ -153,7 +160,7 @@ const frenchContent: PortfolioContent = {
     name: "Ange-Francine FORKOU",
     title: "Data Engineer & Développeuse BI",
     tagline: "Je transforme des millions de lignes en tableaux de bord que les gens utilisent vraiment.",
-    bio: "En alternance à la CNAF, je conçois les pipelines de données et dashboards qui aident 101 caisses d'allocations familiales à piloter leurs réclamations. Databricks, PySpark, Power BI, Azure : c'est mon quotidien depuis 2 ans.",
+    bio: "En alternance à la CNAF, je conçois les pipelines de données et dashboards qui aident 101 caisses d'allocations familiales à piloter leurs réclamations. Databricks, PySpark, Power BI, Azure — c'est mon quotidien depuis 2 ans. Et je documente tout ce que j'apprends en chemin.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
     phone: "+33 6 95 27 78 30",
@@ -167,10 +174,10 @@ const frenchContent: PortfolioContent = {
       { name: "Anglais", level: "C1+ (TOEIC 950/990, BULATS 98/100)" },
     ],
     softSkills: [
-      "Je sais expliquer - J'ai formé 100 utilisateurs métier à mes dashboards",
-      "Je livre - Mes pipelines tournent en prod tous les mois depuis 1 an",
-      "Je collabore - 5 ans déléguée de classe, ça laisse des traces",
       "Je traduis — Les besoins métier en requêtes SQL et dashboards lisibles",
+      "Je creuse — Je ne lâche pas un bug tant que je n'ai pas compris le pourquoi",
+      "Je livre — Mes pipelines tournent en prod tous les mois depuis 1 an",
+      "Je transmets — J'ai formé 100 utilisateurs métier à mes outils",
     ],
     interests: ["Technologie & veille data", "Entrepreneuriat", "Bénévolat"],
   },
@@ -181,15 +188,15 @@ const frenchContent: PortfolioContent = {
       title: "Alternance - Data Engineer / Développeuse d'applicatifs BI",
       period: "Sept. 2024 - Sept. 2026",
       bullets: [
-        "Refonte du système national de suivi des réclamations : conception et déploiement d'un tableau de bord Power BI utilisé par 101 CAF et 500 utilisateurs, en remplacement d'une application SAS obsolète.",
-        "Développement de pipelines ETL sous Databricks (PySpark) traitant plusieurs millions de réclamations/an avec une architecture Medallion (Bronze/Silver/Gold).",
-        "Orchestration de 6 notebooks via Databricks Workflows avec un temps d'exécution optimisé de 5 à 7 minutes en batch mensuel.",
-        "Implémentation de la gouvernance des données via Unity Catalog et stockage sur Delta Lake / Azure Storage.",
-        "Création d'un tableau de bord pour le pilotage des Services d'Aide à Domicile, consolidant les données de financeurs multiples (CAF, Départements, CPAM).",
-        "Animation d'ateliers de formation à destination de 100 utilisateurs métier sur la prise en main des tableaux de bord.",
-        "Revue et standardisation de notebooks Python/Spark existants : amélioration des performances et respect des bonnes pratiques.",
-        "Réalisation d'un POC Databricks AI/BI (Genie Room) : évaluation des capacités de requêtage en langage naturel, recommandations adoptées par l'équipe.",
-        "Collaboration avec les équipes MOA/AMOA ; versioning et maintenance des pipelines via Git (Azure DevOps).",
+        "Refonte complète du système national de suivi des réclamations : j'ai remplacé une application SAS vieillissante par un dashboard Power BI utilisé par 101 CAF et 500+ utilisateurs",
+        "Développement des pipelines ETL sous Databricks (PySpark) — plusieurs millions de réclamations traitées chaque année, architecture Medallion (Bronze/Silver/Gold)",
+        "Orchestration de 4 notebooks avec Databricks Workflows : exécution mensuelle optimisée à 5-7 minutes",
+        "Mise en place de la gouvernance des données : Unity Catalog pour le contrôle d'accès, Delta Lake pour le stockage, Azure Storage pour la persistance",
+        "Création d'un second dashboard pour piloter les Services d'Aide à Domicile (SAAD), en consolidant des données de plusieurs financeurs (CAF, Départements, CPAM)",
+        "Formation de ~100 utilisateurs métier à la prise en main des tableaux de bord — ateliers, documentation, support",
+        "Revue et standardisation des notebooks Python/Spark existants : optimisation des performances, bonnes pratiques",
+        "POC Databricks AI/BI (Genie Room) : j'ai testé les capacités de requêtage en langage naturel et rédigé des recommandations adoptées par l'équipe",
+        "Collaboration quotidienne avec les équipes MOA/AMOA ; versioning Git via Azure DevOps",
       ],
       tech: ["Databricks", "Python", "Spark", "Power BI", "Azure", "Unity Catalog", "Delta Lake", "Azure DevOps", "Git"],
     },
@@ -199,9 +206,9 @@ const frenchContent: PortfolioContent = {
       title: "Stage - Ingénieur Logiciel",
       period: "Fév. 2024 - Août 2024",
       bullets: [
-        "Développement d'une solution de visualisation de données réseaux de transport optique : API Python (FastAPI) et TypeScript (Vue.js) pour créer des dashboards interactifs.",
-        "Administration de bases de données NoSQL (MongoDB) sur clusters Kubernetes (Linux).",
-        "Mise en place de pipelines CI/CD via GitLab CI et SonarQube pour le contrôle qualité.",
+        "Développement d'une application de visualisation de données réseaux de transport optique : API Python (FastAPI) côté back, interface TypeScript (Vue.js) côté front",
+        "Administration de bases MongoDB sur clusters Kubernetes en environnement Linux",
+        "Mise en place de pipelines CI/CD avec GitLab CI et contrôle qualité via SonarQube",
       ],
       tech: ["FastAPI", "Vue.js", "TypeScript", "MongoDB", "Kubernetes", "GitLab CI", "SonarQube"],
     },
@@ -210,18 +217,18 @@ const frenchContent: PortfolioContent = {
     {
       school: "EPSI, Rennes",
       degree: "Mastère spécialisé - Expert en ingénierie des données",
-      period: "Sept. 2024 - Présent",
+      period: "Sept. 2024 - Présent (soutenance juillet 2026)",
       details: "Pipelines de données, Big Data, Data Viz, Gouvernance, Green IT",
     },
     {
-      school: "IUSJ - UTT",
-      degree: "Diplôme d’ingénieur - Développement logiciel",
+      school: "IUSJ (Cameroun) × UTT (France)",
+      degree: "Diplôme d'ingénieur - Développement logiciel",
       period: "2019 - 2024",
-      details: "Architecture des SI, Modélisation et Data viz (Power BI)",
+      details: "Architecture des SI, Développement web/mobile, Data Mining, Power BI",
     },
     {
       school: "UTBM, Belfort",
-      degree: "Semestre d’échange - Développement logiciel avancé",
+      degree: "Semestre d'échange - Développement logiciel avancé",
       period: "Sept. 2023 - Fév. 2024",
       details: "Bases de données (SQL, NoSQL), Gestion de projet Agile, Java",
     },
@@ -247,15 +254,41 @@ const frenchContent: PortfolioContent = {
       issuer: "Databricks",
       link: "https://partner-academy.databricks.com/learn/courses/2469/get-started-with-databricks-for-data-engineering?hash=a4c6e6e8910eb43f6d827a874387454de05a5584&generated_by=880806",
     },
+    {
+      name: "TOEIC",
+      issuer: "ETS",
+      link: "",
+      score: "950/990",
+    },
+    {
+      name: "Cambridge Linguaskill (BULATS)",
+      issuer: "Cambridge",
+      link: "",
+      score: "98/100",
+    },
+  ],
+  certificationsInProgress: [
+    {
+      name: "Databricks Certified Data Engineer Associate",
+      issuer: "Databricks",
+      link: "https://www.databricks.com/learn/certification/data-engineer-associate",
+      expectedDate: "T2 2025",
+    },
+    {
+      name: "Microsoft Azure DP-700 (Fabric Analytics Engineer)",
+      issuer: "Microsoft",
+      link: "https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/",
+      expectedDate: "T3 2025",
+    },
   ],
   projects: [
     {
       name: "Tableau de bord des réclamations",
       org: "CNAF - Alternance",
-      role: "Data Engineer et référente BI",
+      role: "Data Engineer & référente BI",
       period: "2024 - 2025",
       summary:
-        "J'ai repris un système vieillissant sous SAS pour le reconstruire sur Databricks + Power BI. Aujourd'hui, 101 CAF l'utilisent chaque mois.",
+        "J'ai repris un système vieillissant sous SAS pour le reconstruire entièrement sur Databricks + Power BI. Aujourd'hui, 101 CAF l'utilisent chaque mois pour suivre leurs réclamations.",
       bullets: [
         "Reconstruction du data mart sur Delta Lake avec automatisation des jobs Databricks",
         "Modélisation et publication d'un espace Power BI avec des mesures DAX réutilisables",
@@ -263,13 +296,13 @@ const frenchContent: PortfolioContent = {
       ],
       cover: cnafDashboard,
       gallery: [cnafDashboard, cnafAnalyse],
-      stack: ["Databricks", "Spark", "Python", "Power BI"],
+      stack: ["Databricks", "Spark", "Python", "Power BI", "Azure"],
       link: cnafDashboard,
     },
     {
       name: "Analyse de données e-commerce",
-      org: "EPSI - M1",
-      role: "Data Analyst projet de groupe",
+      org: "EPSI - Atelier Big Data",
+      role: "Data Analyst (projet de groupe)",
       period: "2024 - 2025",
       summary:
         "Projet de groupe : construction d'un data lake Hadoop pour analyser les ventes d'une plateforme e-commerce et proposer des recommandations marketing.",
@@ -279,11 +312,11 @@ const frenchContent: PortfolioContent = {
         "Restitution via rapport interactif et soutenance",
       ],
       cover: schoolProjectOne,
-      stack: ["Hadoop", "Spark"],
+      stack: ["Hadoop", "Spark", "MapReduce"],
       link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     },
     {
-      name: "Pipeline Big Data pour un labo",
+      name: "Pipeline Big Data pour un laboratoire R&D",
       org: "EPSI - M1",
       role: "Lead Data Engineer",
       period: "2024 - 2025",
@@ -296,7 +329,7 @@ const frenchContent: PortfolioContent = {
       ],
       cover: schoolProjectTwo,
       gallery: [schoolProjectTwo, schoolProjectTwoOne],
-      stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt"],
+      stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt", "PostgreSQL"],
       link: "https://www.canva.com/design/DAGqzNY5xKY/9o3BTlrJ3Ax-Hc3CJfh6rw/edit",
     },
   ],
@@ -307,11 +340,11 @@ const frenchContent: PortfolioContent = {
       items: [
         {
           name: "Tableaux de bord Power BI",
-          detail: "Du cadrage KPI à la publication et à la gouvernance des espaces.",
+          detail: "Du cadrage KPI à la publication — dashboards utilisés par des centaines de personnes",
         },
         {
           name: "Pipelines Databricks",
-          detail: "Jobs planifiés, qualité de données et monitoring.",
+          detail: "Jobs planifiés en prod depuis 1 an, monitoring et alerting",
         },
         {
           name: "Data marts analytiques",
@@ -325,17 +358,20 @@ const frenchContent: PortfolioContent = {
     },
     {
       category: "Technologies et outils",
-      intro: "Les stacks que je pilote au quotidien.",
+      intro: "Ce que j'utilise au quotidien — et ce que j'apprends.",
       items: [
-        { name: "Databricks", detail: "Delta Lake, notebooks collaboratifs et jobs assurés." },
-        { name: "Spark", detail: "Optimisation des transformations batch et streaming." },
+        { name: "Databricks", detail: "Mon outil principal — j'y passe 80% de mon temps de dev" },
+        { name: "Spark", detail: "PySpark pour les transformations à grande échelle" },
         { name: "Python", detail: "Mon langage principal : scripts, notebooks, APIs" },
-        { name: "Power BI", detail: "Modélisation DAX, Power Query; Je conçois des dashboards utilisés par des centaines de personnes" },
-        { name: "Airflow", detail: "Orchestration CI/CD et senseurs multi-sources -  utilisé sur un projet académique" },
-        { name: "Dbt", detail: "En cours d'apprentissage pour mes projets perso" },
-        { name: "Azure", detail: "Storage, Data Factory et DevOps pour le monitoring." },
-        { name: "Docker", detail: "Environnements reproductibles pour notebooks et APIs." },
+        { name: "Power BI", detail: "Je conçois des dashboards utilisés par des centaines de personnes" },
+        { name: "Azure", detail: "Mon environnement cloud au quotidien (Storage, DevOps)" },
+        { name: "Docker", detail: "Pour packager mes environnements de dev" },
+        { name: "Airflow", detail: "Utilisé sur un projet académique — en apprentissage" },
+        { name: "Dbt", detail: "En cours d'apprentissage sur mes projets perso" },
+        { name: "PostgreSQL", detail: "Bases relationnelles et modélisation dimensionnelle" },
+        { name: "LookerStudio", detail: "Dashboards légers pour partager des analyses" },
         { name: "Hadoop", detail: "Utilisé en contexte académique (HDFS, écosystème)" },
+        { name: "MapReduce", detail: "Bases acquises en formation Big Data" },
       ],
     },
   ],
@@ -359,20 +395,20 @@ const frenchContent: PortfolioContent = {
       },
     },
     home: {
-      availability: "À l’écoute d’opportunités",
+      availability: "À l'écoute d'opportunités",
       primaryCta: "Voir mes projets",
       secondaryCta: "Me contacter",
       metricsTitle: "Ce que j'ai livré",
-      metricsSubtitle: "Quelques résultats concrets.",
+      metricsSubtitle: "Des résultats concrets, pas juste des lignes de code.",
       aboutTitle: "À propos de moi",
-      aboutText: "Camerounaise, ingénieure, et passionnée de données. J'ai grandi à Yaoundé, étudié l'informatique entre le Cameroun et la France ( Belfort, Rennes), et découvert la data un peu par hasard — lors d'un cours de Data Mining en 3ème année. Ce qui m'a accrochée : le côté concret. Quand je livre un dashboard, je vois des gens s'en servir pour prendre des décisions. C'est cette boucle \"données → décision → impact\" qui me motive.",
+      aboutText: "Camerounaise, ingénieure, et passionnée de données. J'ai grandi à Douala, étudié l'informatique entre le Cameroun et la France (Troyes, Belfort, Rennes), et découvert la data un peu par hasard — lors d'un cours de Data Mining en 3ème année. Ce qui m'a accrochée : le côté concret. Quand je livre un dashboard, je vois des gens s'en servir pour prendre des décisions. C'est cette boucle \"données → décision → impact\" qui me motive.",
       languagesTitle: "Langues",
-      softSkillsTitle: "Atouts",
-      interestsTitle: "Centres d’intérêt",
+      softSkillsTitle: "Comment je travaille",
+      interestsTitle: "Centres d'intérêt",
       metrics: [
-        { label: "Projets réalisés", valueKey: "projectCount" },
-        { label: "Technologies utilisées", valueKey: "stackCount" },
-        { label: "Pipelines de données", valueKey: "pipelineCount" },
+        { label: "CAF utilisent mon dashboard", valueKey: "cafCount" },
+        { label: "utilisateurs formés", valueKey: "usersCount" },
+        { label: "en environnement Databricks & Azure", valueKey: "yearsExp" },
       ],
     },
     experience: {
@@ -396,6 +432,7 @@ const frenchContent: PortfolioContent = {
       roleLabel: "Rôle",
       durationLabel: "Durée",
       stackLabel: "Stack",
+      impactLabel: "Impact",
       deliverablesLabel: "Livrables clés",
       viewProject: "Voir le projet",
     },
@@ -412,6 +449,7 @@ const frenchContent: PortfolioContent = {
       subtitle: "Preuves de mon apprentissage continu.",
       empty: "Aucune certification renseignée pour le moment.",
       view: "Voir le certificat",
+      inProgress: "En préparation",
     },
     education: {
       title: "Formation",
@@ -422,10 +460,10 @@ const frenchContent: PortfolioContent = {
       subtitle: "Parlons data, produits et impact concret.",
       headline: "Discutons de vos projets",
       intro:
-        "J’aime co-construire des produits data utiles et pilotables. Une idée de dashboard, un pipeline à fiabiliser ou une question sur la gouvernance de la donnée ? Je serais ravie d’en discuter.",
+        "J'aime co-construire des produits data utiles et pilotables. Une idée de dashboard, un pipeline à fiabiliser ou une question sur la gouvernance de la donnée ? Je serais ravie d'en discuter.",
       searchTitle: "Ce que je cherche",
       searchBody:
-        "Un CDI en Data Engineering ou BI à partir de novembre 2026, idéalement à Lyon. En attendant, ouverte aux ateliers d'accélération sur vos pipelines et tableaux de bord.",
+        "Un CDI en Data Engineering ou BI à partir de septembre 2026, idéalement à Lyon. En attendant, ouverte aux missions freelance ou ateliers d'accélération sur vos pipelines et tableaux de bord.",
       emailLink: "Écrire un email",
       phoneLink: "Appeler",
     },
@@ -440,10 +478,10 @@ const frenchContent: PortfolioContent = {
       submitSending: "Envoi...",
       success: "Message envoyé avec succès !",
       error: "Une erreur est survenue.",
-      fallback: "Impossible d’envoyer le message.",
+      fallback: "Impossible d'envoyer le message.",
     },
     footer: {
-      madeWith: "Fait avec du café 😊, React et Tailwind CSS.",
+      madeWith: "Fait avec du café, React et Tailwind CSS.",
       rights: "© {{year}} {{name}}. Tous droits réservés.",
     },
     theme: {
@@ -453,7 +491,11 @@ const frenchContent: PortfolioContent = {
       buttonLabel: "Changer le thème — actuel : {{label}}",
     },
   },
-  pipelinesCount: 5,
+  metricsValues: {
+    cafCount: 101,
+    usersCount: "500+",
+    yearsExp: "2 ans",
+  },
 };
 
 const englishContent: PortfolioContent = {
@@ -486,7 +528,7 @@ const englishContent: PortfolioContent = {
     {
       company: "Caisse Nationale des Allocations Familiales (CNAF)",
       location: "Rennes, FR",
-      title: "Apprenticeship - Data Engineer / BI Application Developer",
+      title: "Work-Study - Data Engineer / BI Application Developer",
       period: "Sept. 2024 - Sept. 2026",
       bullets: [
         "Complete overhaul of the national complaints tracking system: replaced an aging SAS application with a Power BI dashboard used by 101 CAF offices and 500+ users",
@@ -518,14 +560,14 @@ const englishContent: PortfolioContent = {
     {
       school: "EPSI, Rennes",
       degree: "Master's degree - Data Engineering Expert",
-      period: "Sept. 2024 - Present",
+      period: "Sept. 2024 - Present (defense July 2026)",
       details: "Data pipelines, Big Data, Data Viz, Governance, Green IT",
     },
     {
       school: "IUSJ (Cameroon) × UTT (France)",
       degree: "Engineering degree - Software Development",
       period: "2019 - 2024",
-      details: "Information systems architecture, data visualisation (Power BI)",
+      details: "IS Architecture, Web/Mobile Development, Data Mining, Power BI",
     },
     {
       school: "UTBM, Belfort",
@@ -534,11 +576,58 @@ const englishContent: PortfolioContent = {
       details: "Databases (SQL, NoSQL), Agile Project Management, Java",
     },
   ],
-  certifications: frenchContent.certifications,
+  certifications: [
+    {
+      name: "IBM Data Analyst Professional Certificate",
+      issuer: "IBM / Coursera",
+      link: "https://www.coursera.org/account/accomplishments/specialization/WQ2GLB46L5M6",
+    },
+    {
+      name: "Dataiku Core Designer",
+      issuer: "Dataiku",
+      link: "http://verify.skilljar.com/c/z6p5zxzj6ped",
+    },
+    {
+      name: "Microsoft Certified: Power BI Data Analyst Associate",
+      issuer: "Microsoft",
+      link: "https://learn.microsoft.com/certifications/power-bi-data-analyst-associate/",
+    },
+    {
+      name: "Databricks for Data Engineering",
+      issuer: "Databricks",
+      link: "https://partner-academy.databricks.com/learn/courses/2469/get-started-with-databricks-for-data-engineering?hash=a4c6e6e8910eb43f6d827a874387454de05a5584&generated_by=880806",
+    },
+    {
+      name: "TOEIC",
+      issuer: "ETS",
+      link: "",
+      score: "950/990",
+    },
+    {
+      name: "Cambridge Linguaskill (BULATS)",
+      issuer: "Cambridge",
+      link: "",
+      score: "98/100",
+    },
+  ],
+  certificationsInProgress: [
+    {
+      name: "Databricks Certified Data Engineer Associate",
+      issuer: "Databricks",
+      link: "https://www.databricks.com/learn/certification/data-engineer-associate",
+      expectedDate: "Q2 2025",
+    },
+    {
+      name: "Microsoft Azure DP-700 (Fabric Analytics Engineer)",
+      issuer: "Microsoft",
+      link: "https://learn.microsoft.com/en-us/credentials/certifications/fabric-analytics-engineer-associate/",
+      expectedDate: "Q3 2025",
+    },
+  ],
   projects: [
     {
       name: "National Complaints Dashboard",
-      org: "CNAF - Apprenticeship",
+      org: "CNAF - Work-Study",
       role: "Data Engineer & BI Lead",
       period: "2024 - 2025",
       summary:
@@ -550,7 +639,7 @@ const englishContent: PortfolioContent = {
       ],
       cover: cnafDashboard,
       gallery: [cnafDashboard, cnafAnalyse],
-      stack: ["Databricks", "Spark", "Python", "Power BI"],
+      stack: ["Databricks", "Spark", "Python", "Power BI", "Azure"],
       link: cnafDashboard,
     },
     {
@@ -566,7 +655,7 @@ const englishContent: PortfolioContent = {
         "Delivered via interactive report and presentation",
       ],
       cover: schoolProjectOne,
-      stack: ["Hadoop", "Spark"],
+      stack: ["Hadoop", "Spark", "MapReduce"],
       link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     },
     {
@@ -583,7 +672,7 @@ const englishContent: PortfolioContent = {
       ],
       cover: schoolProjectTwo,
       gallery: [schoolProjectTwo, schoolProjectTwoOne],
-      stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt"],
+      stack: ["Python", "Spark", "Airflow", "LookerStudio", "Dbt", "PostgreSQL"],
       link: "https://www.canva.com/design/DAGqzNY5xKY/9o3BTlrJ3Ax-Hc3CJfh6rw/edit",
     },
   ],
@@ -594,35 +683,38 @@ const englishContent: PortfolioContent = {
       items: [
         {
           name: "Power BI dashboards",
-          detail: "From KPI scoping to workspace publishing and governance — dashboards used by hundreds of people",
+          detail: "From KPI scoping to publishing — dashboards used by hundreds of people",
         },
         {
           name: "Databricks pipelines",
-          detail: "Scheduled jobs, data quality and SLA monitoring on Spark/Python.",
+          detail: "Scheduled jobs in prod for 1 year, monitoring and alerting",
         },
         {
           name: "Analytical data marts",
-          detail: "Dimensional modelling and SQL/API exposure for stakeholders.",
+          detail: "Dimensional modeling and Medallion architecture",
         },
         {
-          name: "CI/CD automations",
-          detail: "Azure DevOps and GitLab workflows to secure releases.",
+          name: "User training",
+          detail: "Workshops and documentation for ~100 business users",
         },
       ],
     },
     {
-      category: "Technologies & tooling",
-      intro: "Stacks I operate every day.",
+      category: "Technologies & tools",
+      intro: "What I use daily — and what I'm learning.",
       items: [
-        { name: "Databricks", detail: "Delta Lake, collaborative notebooks, and dependable jobs." },
-        { name: "Spark", detail: "Optimising batch and streaming transformations." },
-        { name: "Python", detail: "Dataframes, PySpark testing, and packaging best practices." },
-        { name: "Power BI", detail: "DAX modelling, Power Query, and dynamic parameters." },
+        { name: "Databricks", detail: "My main tool — 80% of my dev time is spent here" },
+        { name: "Spark", detail: "PySpark for large-scale transformations" },
+        { name: "Python", detail: "My primary language: scripts, notebooks, APIs" },
+        { name: "Power BI", detail: "I design dashboards used by hundreds of people" },
+        { name: "Azure", detail: "My daily cloud environment (Storage, DevOps)" },
+        { name: "Docker", detail: "For packaging my dev environments" },
         { name: "Airflow", detail: "Used on an academic project — still learning" },
-        { name: "Dbt", detail: "Currently learning on personal projects"},
-        { name: "Azure", detail: "Storage, Data Factory, and DevOps monitoring." },
-        { name: "Docker", detail: "Reproducible environments for notebooks and APIs." },
-        { name: "Hadoop", detail: "Distributed processing for large volumes." },
+        { name: "Dbt", detail: "Currently learning on personal projects" },
+        { name: "PostgreSQL", detail: "Relational databases and dimensional modeling" },
+        { name: "LookerStudio", detail: "Lightweight dashboards for sharing analyses" },
+        { name: "Hadoop", detail: "Used in academic context (HDFS, ecosystem)" },
+        { name: "MapReduce", detail: "Fundamentals acquired in Big Data training" },
       ],
     },
   ],
@@ -650,16 +742,16 @@ const englishContent: PortfolioContent = {
       primaryCta: "View my projects",
       secondaryCta: "Get in touch",
       metricsTitle: "What I've delivered",
-      metricsSubtitle: "A few results that illustrate what I deliver.",
+      metricsSubtitle: "Concrete results, not just lines of code.",
       aboutTitle: "About me",
-      aboutText: "Cameroonian, engineer, and passionate about data. I grew up in Yaoundé, studied computer science between Cameroon and France (Belfort, Rennes), and discovered data almost by accident — during a Data Mining course in my third year. What hooked me: the tangible impact. When I deliver a dashboard, I see people use it to make decisions. That \"data → decision → impact\" loop is what drives me.",
+      aboutText: "Cameroonian, engineer, and passionate about data. I grew up in Douala, studied computer science between Cameroon and France (Troyes, Belfort, Rennes), and discovered data almost by accident — during a Data Mining course in my third year. What hooked me: the tangible impact. When I deliver a dashboard, I see people use it to make decisions. That \"data → decision → impact\" loop is what drives me.",
       languagesTitle: "Languages",
       softSkillsTitle: "How I work",
       interestsTitle: "Interests",
       metrics: [
-        { label: "Projects delivered", valueKey: "projectCount" },
-        { label: "The tools I operate on", valueKey: "stackCount" },
-        { label: "Data pipelines", valueKey: "pipelineCount" },
+        { label: "CAF offices use my dashboard", valueKey: "cafCount" },
+        { label: "users trained", valueKey: "usersCount" },
+        { label: "in Databricks & Azure environment", valueKey: "yearsExp" },
       ],
     },
     experience: {
@@ -683,6 +775,7 @@ const englishContent: PortfolioContent = {
       roleLabel: "Role",
       durationLabel: "Duration",
       stackLabel: "Stack",
+      impactLabel: "Impact",
       deliverablesLabel: "Key deliverables",
       viewProject: "View project",
     },
@@ -699,6 +792,7 @@ const englishContent: PortfolioContent = {
       subtitle: "Proof of continuous learning.",
       empty: "No certification listed yet.",
       view: "View certificate",
+      inProgress: "In progress",
     },
     education: {
       title: "Education",
@@ -709,10 +803,10 @@ const englishContent: PortfolioContent = {
       subtitle: "Let's talk data, products, and measurable impact.",
       headline: "Let's discuss your projects",
       intro:
-        "I love co-building data products that are useful. Need a dashboard, a reliable pipeline, or a question about data governance? I'd be happy to discuss.",
+        "I love co-building data products that are useful and actionable. Have a dashboard idea, a pipeline to stabilize, or a question about data governance? I'd be happy to discuss.",
       searchTitle: "What I'm looking for",
       searchBody:
-        "A permanent Data Engineering or BI position starting September 2026, ideally in Lyon. In the meantime, open to acceleration workshops on your pipelines and dashboards.",
+        "A permanent Data Engineering or BI position starting September 2026, ideally in Lyon. In the meantime, open to freelance missions or acceleration workshops on your pipelines and dashboards.",
       emailLink: "Send an email",
       phoneLink: "Call",
     },
@@ -730,7 +824,7 @@ const englishContent: PortfolioContent = {
       fallback: "Unable to send the message.",
     },
     footer: {
-      madeWith: "Powered by coffee 😊, React and Tailwind CSS.",
+      madeWith: "Powered by coffee, React and Tailwind CSS.",
       rights: "© {{year}} {{name}}. All rights reserved.",
     },
     theme: {
@@ -740,7 +834,11 @@ const englishContent: PortfolioContent = {
       buttonLabel: "Switch theme — current: {{label}}",
     },
   },
-  pipelinesCount: 5,
+  metricsValues: {
+    cafCount: 101,
+    usersCount: "500+",
+    yearsExp: "2 years",
+  },
 };
 
 const contentByLanguage: Record<LanguageKey, PortfolioContent> = {

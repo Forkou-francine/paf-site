@@ -28,7 +28,7 @@ export default function FilterBar({
       <button
         type="button"
         onClick={onReset}
-        className="btn-hover rounded-full bg-white px-3 py-1 text-sm ring-1 ring-zinc-200 dark:ring-slate-700"
+        className="btn-hover rounded-full bg-white px-3 py-1 text-sm ring-1 ring-zinc-200 dark:bg-slate-800 dark:text-slate-100 dark:ring-slate-700"
         aria-pressed={active.size === 0}
       >
         {allLabel}
@@ -40,8 +40,8 @@ export default function FilterBar({
           onClick={() => onToggle(tech)}
           className={`btn-hover rounded-full px-3 py-1 text-sm ring-1 ${
             active.has(tech)
-              ? "bg-zinc-900 text-white ring-zinc-900"
-              : "bg-white ring-zinc-200 dark:ring-slate-700"
+              ? "bg-zinc-900 text-white ring-zinc-900 dark:bg-violet-600 dark:ring-violet-600"
+              : "bg-white ring-zinc-200 dark:bg-slate-800 dark:text-slate-100 dark:ring-slate-700"
           }`}
           title={getTooltip(tech)}
           aria-pressed={active.has(tech)}

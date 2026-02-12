@@ -40,7 +40,7 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs ring-1 ring-zinc-200 dark:ring-slate-700">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:text-slate-100 dark:ring-slate-700">
               <span className="relative inline-flex h-2 w-2">
                 <span className="absolute h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-500" />
@@ -62,14 +62,14 @@ export default function Home() {
               </Link>
               <Link
                 to="/contact"
-                className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:ring-slate-700"
+                className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:text-slate-100 dark:ring-slate-700"
               >
                 {labels.home.secondaryCta}
               </Link>
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-square w-full overflow-hidden rounded-3xl border bg-white/60 shadow-xl ring-1 ring-zinc-200 dark:bg-slate-900/60 dark:ring-slate-700">
+            <div className="aspect-square w-full overflow-hidden rounded-3xl border border-zinc-200 bg-white/60 shadow-xl ring-1 ring-zinc-200 dark:border-slate-700 dark:bg-slate-900/60 dark:ring-slate-700">
               <img
                 src={profile.heroPhoto}
                 alt={`Portrait de ${profile.name}`}
@@ -94,8 +94,13 @@ export default function Home() {
       </Section>
 
       <Section title={labels.home.aboutTitle}>
+        <div>
+          <p className="m-2 text-lg text-zinc-600 dark:text-slate-400">
+            {labels.home.aboutText}
+          </p>
+        </div>
         <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700">
+          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700">
             <h3 className="font-semibold">{labels.home.languagesTitle}</h3>
             <ul className="mt-3 space-y-2 text-sm">
               {profile.languages.map((l) => (
@@ -108,15 +113,15 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700">
+          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700">
             <h3 className="font-semibold">{labels.home.softSkillsTitle}</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 px-5 flex flex-wrap gap-2">
               {profile.softSkills?.map((skill) => (
-                <Badge key={skill}>{skill}</Badge>
+                <li key={skill}>{skill}</li>
               ))}
             </div>
           </div>
-          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:ring-slate-700">
+          <div className="rounded-2xl bg-white/80 p-5 ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700">
             <h3 className="font-semibold">{labels.home.interestsTitle}</h3>
             <ul className="mt-3 list-inside list-disc text-sm">
               {profile.interests?.map((interest) => (
@@ -132,7 +137,7 @@ export default function Home() {
 
 function CardStat({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200 dark:ring-slate-700">
+    <div className="rounded-2xl bg-white/80 p-5 text-center ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700">
       <div className="text-3xl font-extrabold">{value}</div>
       <div className="mt-1 text-sm text-zinc-600 dark:text-slate-400">{label}</div>
     </div>

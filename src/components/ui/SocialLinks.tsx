@@ -13,7 +13,7 @@ export default function SocialLinks({ withEmail = true, className = "" }: Props)
       {withEmail && profile.email && (
         <a
           href={`mailto:${profile.email}`}
-          className={`inline-flex items-center rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:ring-slate-700 ${colors.ring}`}
+          className={`inline-flex items-center rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:ring-slate-700 ${colors.ring}`}
           aria-label={`${labels.contact.emailLink} ${profile.name}`}
         >
           <FiMail className="h-4 w-4 text-zinc-900 dark:text-white" />
@@ -28,7 +28,7 @@ export default function SocialLinks({ withEmail = true, className = "" }: Props)
             rel="noreferrer"
             aria-label="LinkedIn"
             title="LinkedIn"
-            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:ring-slate-700 dark:hover:bg-slate-800 ${colors.ring}`}
+            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:bg-slate-800/80 dark:ring-slate-700 dark:hover:bg-slate-700 ${colors.ring}`}
           >
             <FaLinkedin className="h-4 w-4 text-[#0A66C2]" />
           </a>
@@ -40,7 +40,7 @@ export default function SocialLinks({ withEmail = true, className = "" }: Props)
             rel="noreferrer"
             aria-label="GitHub"
             title="GitHub"
-            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:ring-slate-700 dark:hover:bg-slate-800 ${colors.ring}`}
+            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:bg-slate-800/80 dark:ring-slate-700 dark:hover:bg-slate-700 ${colors.ring}`}
           >
             <FaGithub className="h-4 w-4" />
           </a>
@@ -52,7 +52,7 @@ export default function SocialLinks({ withEmail = true, className = "" }: Props)
             rel="noreferrer"
             aria-label="Medium"
             title="Medium"
-            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:ring-slate-700 dark:hover:bg-slate-800 ${colors.ring}`}
+            className={`inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 ring-1 ring-zinc-200 transition-colors hover:bg-white dark:bg-slate-800/80 dark:ring-slate-700 dark:hover:bg-slate-700 ${colors.ring}`}
           >
             <FaMedium className="h-4 w-4" />
           </a>

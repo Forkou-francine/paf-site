@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable dark mode with class strategy (Tailwind v4) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* --- Blobs animés (B) --- */
 @keyframes pulse-slow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(10px)} }
 @keyframes pulse-slower { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
