@@ -29,4 +29,5 @@ export type Project = {
   gallery?: string[];
   stack: string[];
   link?: string;
+  videoUrl?: string;
 };

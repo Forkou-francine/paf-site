@@ -1,9 +1,14 @@
 import heroPhoto from "../assets/ange1.jpg";
-import cnafDashboard from "../assets/projects/projet2-cc.png";
+import cnafDashboard from "../assets/projects/tb-reclam.jpeg";
 import cnafAnalyse from "../assets/projects/project2.png";
 import schoolProjectOne from "../assets/projects/project1.png";
 import schoolProjectTwo from "../assets/projects/project3.png";
 import schoolProjectTwoOne from "../assets/projects/ae.png";
+import fintechPipeline from "../assets/projects/fintech.png";
+import fintechArchi from "../assets/projects/fintech-archi.png";
+import fintechDashboard from "../assets/projects/fintech-dashboard.png";
+import fintechTable from "../assets/projects/fintech-table.png";
+
 
 import logoDatabricks from "../assets/logos/databricks.png";
 import logoSpark from "../assets/logos/spark.png";
@@ -150,7 +155,7 @@ export type PortfolioContent = {
 
 const frenchContent: PortfolioContent = {
   profile: {
-    name: "Ange-Francine FORKOU",
+    name: "Ange Francine FORKOU",
     title: "Data Engineer & Développeuse BI",
     tagline: "Je transforme des millions de lignes en tableaux de bord que les gens utilisent vraiment.",
     bio: "En alternance à la CNAF, je conçois les pipelines de données et dashboards qui aident 101 caisses d'allocations familiales à piloter leurs réclamations. Databricks, PySpark, Power BI, Azure : c'est mon quotidien depuis 2 ans.",
@@ -264,6 +269,26 @@ const frenchContent: PortfolioContent = {
       gallery: [cnafDashboard, cnafAnalyse],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
       link: cnafDashboard,
+      videoUrl: "https://www.loom.com/share/b2131ab6daba43808221329698323a9e"
+    },
+    {
+      name: "Pipeline de qualité des données Fintech",
+      org: "Projet personnel",
+      role: "Data Engineer",
+      period: "2025",
+      summary:
+        "Pipeline end-to-end qui ingère des transactions financières simulées, les transforme avec dbt, valide leur qualité avec Great Expectations, orchestre le tout avec Airflow, et expose un dashboard de monitoring.",
+      bullets: [
+        "Génération de 10 000 transactions synthétiques avec anomalies contrôlées (2% NULL, 3% suspects, 0.5% fraudes)",
+        "Modélisation dbt en 3 couches (staging, intermediate, marts) avec tests de qualité déclaratifs",
+        "7 règles de validation Great Expectations couvrant complétude, cohérence et anomalies",
+        "Orchestration Airflow via Docker : DAG quotidien de 4 tâches séquentielles",
+        "Dashboard Streamlit interactif avec score de qualité global et drill-down par catégorie",
+      ],
+      cover: fintechDashboard,
+      gallery: [fintechDashboard, fintechTable, fintechPipeline, fintechArchi],
+      stack: ["Python", "Dbt", "Airflow", "DuckDB", "Streamlit", "Docker"],
+      link: "https://github.com/Forkou-francine/fintech-data-quality-pipeline",
     },
     {
       name: "Analyse de données e-commerce",
@@ -456,7 +481,7 @@ const frenchContent: PortfolioContent = {
 
 const englishContent: PortfolioContent = {
   profile: {
-    name: "Ange-Francine FORKOU",
+    name: "Ange Francine FORKOU",
     title: "Data Engineer & BI Developer",
     tagline: "I turn millions of rows into dashboards people actually use.",
     bio: "Currently in a work-study program at CNAF, I design data pipelines and dashboards that help 101 French family allowance offices manage their complaints. Databricks, PySpark, Power BI, Azure — that's been my daily stack for 2 years. And I document everything I learn along the way.",
@@ -550,6 +575,24 @@ const englishContent: PortfolioContent = {
       gallery: [cnafDashboard, cnafAnalyse],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
       link: cnafDashboard,
+    },
+    {
+      name: "Fintech Data Quality Pipeline",
+      org: "Personal project",
+      role: "Data Engineer",
+      period: "2025",
+      summary:
+        "End-to-end pipeline that ingests simulated financial transactions, transforms them with dbt, validates data quality with Great Expectations, orchestrates everything with Airflow, and exposes a monitoring dashboard.",
+      bullets: [
+        "Generated 10,000 synthetic transactions with controlled anomalies (2% NULL, 3% suspicious, 0.5% fraud)",
+        "dbt modeling across 3 layers (staging, intermediate, marts) with declarative quality tests",
+        "7 Great Expectations validation rules covering completeness, consistency, and anomalies",
+        "Airflow orchestration via Docker: daily DAG with 4 sequential tasks",
+        "Interactive Streamlit dashboard with global quality score and category drill-down",
+      ],
+      cover: fintechPipeline,
+      stack: ["Python", "Dbt", "Airflow", "DuckDB", "Streamlit", "Docker"],
+      link: "https://github.com/Forkou-francine/fintech-data-quality-pipeline",
     },
     {
       name: "E-commerce Data Analysis",

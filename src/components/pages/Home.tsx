@@ -38,7 +38,10 @@ export default function Home() {
               </span>
               {labels.home.availability}
             </div>
-            <h1 className="mt-4 text-4xl font-extrabold tracking-tight md:text-5xl">
+            <h1 className="mt-3 text-2xl font-bold text-zinc-900 dark:text-slate-100 md:text-3xl">
+              {profile.name}
+            </h1>
+            <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight md:text-5xl">
               <span className="block">Data Engineer</span>
               <span className="block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                 & Développeuse BI
