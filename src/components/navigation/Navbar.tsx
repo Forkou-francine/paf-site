@@ -56,15 +56,19 @@ export default function Navbar() {
           )}
         </div>
 
-        {/* Mobile */}
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="rounded-full p-2 ring-1 ring-zinc-200 dark:ring-slate-700 md:hidden"
-          aria-label={labels.nav.openMenu}
-        >
-          <FiMenu />
-        </button>
+        {/* Mobile - toggles + burger */}
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
+          <ThemeToggle mode={mode} resolved={resolved} onCycle={onCycle} />
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="rounded-full p-2 ring-1 ring-zinc-200 dark:ring-slate-700"
+            aria-label={labels.nav.openMenu}
+          >
+            <FiMenu />
+          </button>
+        </div>
       </div>
 
       {/* Drawer mobile simple (sans AnimatePresence pour eviter les conflits) */}
@@ -72,7 +76,7 @@ export default function Navbar() {
         <div className="md:hidden">
           <div className="mx-auto max-w-6xl px-4 pb-3">
             <div className="rounded-xl bg-white/90 p-3 ring-1 ring-zinc-200 dark:bg-slate-900/80 dark:ring-slate-700">
-              <div className="mb-2 flex items-center justify-between">
+              <div className="mb-2 flex items-center justify-end">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
@@ -81,7 +85,6 @@ export default function Navbar() {
                 >
                   <FiX />
                 </button>
-                <LanguageToggle />
               </div>
               <div className="grid gap-1">
                 {navItems.map(({ to, label }) => (
@@ -107,9 +110,6 @@ export default function Navbar() {
                     {labels.nav.downloadCv}
                   </a>
                 )}
-              </div>
-              <div className="mt-3 flex justify-end">
-                <ThemeToggle mode={mode} resolved={resolved} onCycle={onCycle} />
               </div>
             </div>
           </div>
