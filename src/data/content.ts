@@ -167,7 +167,7 @@ const frenchContent: PortfolioContent = {
       { name: "Anglais", level: "C1+ (TOEIC 950/990, BULATS 98/100)" },
     ],
     softSkills: [
-      "Je sais expliquer - J'ai formé 100 utilisateurs métier à mes dashboards",
+      "Je sais expliquer - J'ai formé des utilisateurs métier à mes dashboards",
       "Je livre - Mes pipelines tournent en prod tous les mois depuis 1 an",
       "Je collabore - 5 ans déléguée de classe, ça laisse des traces",
       "Je traduis — Les besoins métier en requêtes SQL et dashboards lisibles",
@@ -186,7 +186,6 @@ const frenchContent: PortfolioContent = {
         "Orchestration de 6 notebooks via Databricks Workflows avec un temps d'exécution optimisé de 5 à 7 minutes en batch mensuel.",
         "Implémentation de la gouvernance des données via Unity Catalog et stockage sur Delta Lake / Azure Storage.",
         "Création d'un tableau de bord pour le pilotage des Services d'Aide à Domicile, consolidant les données de financeurs multiples (CAF, Départements, CPAM).",
-        "Animation d'ateliers de formation à destination de 100 utilisateurs métier sur la prise en main des tableaux de bord.",
         "Revue et standardisation de notebooks Python/Spark existants : amélioration des performances et respect des bonnes pratiques.",
         "Réalisation d'un POC Databricks AI/BI (Genie Room) : évaluation des capacités de requêtage en langage naturel, recommandations adoptées par l'équipe.",
         "Collaboration avec les équipes MOA/AMOA ; versioning et maintenance des pipelines via Git (Azure DevOps).",

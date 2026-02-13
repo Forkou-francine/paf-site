@@ -105,9 +105,6 @@ export default function Home() {
             <span className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">
               {labels.home.aboutTitle}
             </span>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-              Camerounaise, ingénieure, et passionnée de données.
-            </h2>
             <div className="mt-6 space-y-4 text-zinc-600 dark:text-slate-400">
               <p>{labels.home.aboutText}</p>
             </div>
