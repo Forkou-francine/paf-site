@@ -8,7 +8,9 @@ import fintechPipeline from "../assets/projects/fintech.png";
 import fintechArchi from "../assets/projects/fintech-archi.png";
 import fintechDashboard from "../assets/projects/fintech-dashboard.png";
 import fintechTable from "../assets/projects/fintech-table.png";
-
+import databricks1 from "../assets/projects/databricks1.png";
+import databricks2 from "../assets/projects/databricks2.png";
+import databricks3 from "../assets/projects/databricks3.png";
 
 import logoDatabricks from "../assets/logos/databricks.png";
 import logoSpark from "../assets/logos/spark.png";
@@ -99,6 +101,11 @@ export type Labels = {
     title: string;
     subtitle: string;
   };
+  recommendations: {
+    title: string;
+    subtitle: string;
+    empty: string;
+  };
   contact: {
     title: string;
     subtitle: string;
@@ -127,7 +134,6 @@ export type Labels = {
     rights: string;
   };
   theme: {
-    system: string;
     light: string;
     dark: string;
     buttonLabel: string;
@@ -140,6 +146,7 @@ import type {
   Education,
   Cert,
   Project,
+  Recommendation
 } from "../types/types";
 
 export type PortfolioContent = {
@@ -149,6 +156,7 @@ export type PortfolioContent = {
   certifications: Cert[];
   projects: Project[];
   skills: SkillGroup[];
+  recommendations: Recommendation[];
   labels: Labels;
   pipelinesCount: number;
 };
@@ -272,6 +280,24 @@ const frenchContent: PortfolioContent = {
       videoUrl: "https://www.loom.com/share/b2131ab6daba43808221329698323a9e"
     },
     {
+      name: "POC Databricks AI/BI Dashboards",
+      org: "CNAF - Alternance",
+      role: "Data Engineer / Analyst",
+      period: "2025",
+      summary:
+        "Proof of Concept de 4 semaines pour évaluer Databricks One comme alternative à Power BI pour les tableaux de bord métiers de la CNAF. Dashboard pilote sur le suivi du solde de pièces en jours pour 101 CAF et 100+ utilisateurs métier.",
+      bullets: [
+        "Conception et déploiement d'un dashboard pilote connecté à Unity Catalog, avec requêtes SQL performantes (<2s sur 100k+ lignes)",
+        "Évaluation de Genie AI/BI : test du requêtage en langage naturel avec les utilisateurs métier, retour très positif",
+        "Benchmark comparatif détaillé Databricks One vs Power BI vs Tableau sur 20 fonctionnalités clés",
+        "Identification et priorisation de 20 écarts fonctionnels (P0/P1/P2) avec cas d'usage concrets et suggestions d'implémentation",
+        "Rédaction d'un rapport de feedback structuré transmis à Databricks, recommandations adoptées par l'équipe",
+      ],
+      cover: databricks1,
+      gallery: [databricks1, databricks2, databricks3],
+      stack: ["Databricks", "SQL", "Unity Catalog", "Power BI"],
+    },
+    {
       name: "Pipeline de qualité des données Fintech",
       org: "Projet personnel",
       role: "Data Engineer",
@@ -363,6 +389,9 @@ const frenchContent: PortfolioContent = {
       ],
     },
   ],
+  recommendations:[
+
+  ],
   labels: {
     nav: {
       items: [
@@ -371,6 +400,7 @@ const frenchContent: PortfolioContent = {
         { to: "/projects", label: "Projets" },
         { to: "/skills", label: "Compétences" },
         { to: "/education", label: "Formation" },
+        //{ to: "/recommendations", label: "Recommandations" },
         { to: "/contact", label: "Contact" },
       ],
       downloadCv: "Mon CV",
@@ -440,6 +470,11 @@ const frenchContent: PortfolioContent = {
       title: "Formation",
       subtitle: "Mes fondations académiques.",
     },
+    recommendations: {
+      title: "Recommandations",
+      subtitle: "Ce que mes collègues et managers disent de moi.",
+      empty: "Aucune recommandation pour le moment.",
+    },
     contact: {
       title: "Contact",
       subtitle: "Parlons data, produits et impact concret.",
@@ -470,7 +505,6 @@ const frenchContent: PortfolioContent = {
       rights: "© {{year}} {{name}}. Tous droits réservés.",
     },
     theme: {
-      system: "Système",
       light: "Clair",
       dark: "Sombre",
       buttonLabel: "Changer le thème — actuel : {{label}}",
@@ -577,6 +611,24 @@ const englishContent: PortfolioContent = {
       link: cnafDashboard,
     },
     {
+      name: "Databricks AI/BI Dashboards POC",
+      org: "CNAF - Apprenticeship",
+      role: "Data Engineer / Analyst",
+      period: "2025",
+      summary:
+        "4-week Proof of Concept evaluating Databricks One as an alternative to Power BI for CNAF business dashboards. Pilot dashboard tracking complaint backlog across 101 CAF offices and 100+ business users.",
+      bullets: [
+        "Built a pilot dashboard connected to Unity Catalog with high-performance SQL queries (<2s on 100k+ rows)",
+        "Evaluated Genie AI/BI: tested natural language querying with business users, very positive feedback",
+        "Detailed comparative benchmark of Databricks One vs Power BI vs Tableau across 20 key features",
+        "Identified and prioritized 20 functional gaps (P0/P1/P2) with concrete use cases and implementation suggestions",
+        "Authored a structured feedback report sent to Databricks, recommendations adopted by the team",
+      ],
+      cover: databricks1,
+      gallery: [databricks1, databricks2, databricks3],
+      stack: ["Databricks", "SQL", "Unity Catalog", "Power BI"],
+    },
+    {
       name: "Fintech Data Quality Pipeline",
       org: "Personal project",
       role: "Data Engineer",
@@ -667,6 +719,9 @@ const englishContent: PortfolioContent = {
       ],
     },
   ],
+  recommendations:[
+
+  ],
   labels: {
     nav: {
       items: [
@@ -675,6 +730,7 @@ const englishContent: PortfolioContent = {
         { to: "/projects", label: "Projects" },
         { to: "/skills", label: "Skills" },
         { to: "/education", label: "Education" },
+        //{ to: "/recommendations", label: "Recommendations" },
         { to: "/contact", label: "Contact" },
       ],
       downloadCv: "Download CV",
@@ -744,6 +800,11 @@ const englishContent: PortfolioContent = {
       title: "Education",
       subtitle: "My academic foundations.",
     },
+    recommendations: {
+      title: "Recommendations",
+      subtitle: "What my colleagues and managers say about me.",
+      empty: "No recommendations yet.",
+    },
     contact: {
       title: "Contact",
       subtitle: "Let's talk data, products, and measurable impact.",
@@ -774,7 +835,6 @@ const englishContent: PortfolioContent = {
       rights: "© {{year}} {{name}}. All rights reserved.",
     },
     theme: {
-      system: "System",
       light: "Light",
       dark: "Dark",
       buttonLabel: "Switch theme — current: {{label}}",

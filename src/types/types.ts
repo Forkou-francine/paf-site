@@ -31,3 +31,9 @@ export type Project = {
   link?: string;
   videoUrl?: string;
 };
+export type Recommendation = {
+  name: string;
+  role: string;
+  text: string;
+  period: string;
+}

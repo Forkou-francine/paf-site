@@ -13,6 +13,7 @@ const Experience = lazy(() => import("./components/pages/Experience"));
 const Projects = lazy(() => import("./components/pages/Projects"));
 const Skills = lazy(() => import("./components/pages/Skills"));
 const Education = lazy(() => import("./components/pages/Education"));
+const Recommendations = lazy(() => import("./components/pages/Recommendations"));
 const Contact = lazy(() => import("./components/pages/Contact"));
 
 const pageFade: Transition = {
@@ -79,6 +80,7 @@ export default function App() {
                   <Route path="/projects" element={<Projects />} />
                   <Route path="/skills" element={<Skills />} />
                   <Route path="/education" element={<Education />} />
+                  <Route path="/recommendations" element={<Recommendations />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="*" element={<Home />} />
                 </Routes>
