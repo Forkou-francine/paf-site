@@ -1,6 +1,7 @@
 import heroPhoto from "../assets/ange1.jpg";
 import cnafDashboard from "../assets/projects/tb-reclam.jpeg";
 import cnafAnalyse from "../assets/projects/project2.png";
+import adonisDashboard from "../assets/adonis.jpeg";
 import schoolProjectOne from "../assets/projects/project1.png";
 import schoolProjectTwo from "../assets/projects/project3.png";
 import schoolProjectTwoOne from "../assets/projects/ae.png";
@@ -35,6 +36,8 @@ export type NavItem = { to: string; label: string };
 export type HomeMetricKey = "projectCount" | "stackCount" | "pipelineCount";
 export type HomeMetric = { label: string; valueKey: HomeMetricKey };
 
+export type JourneyStage = { tier: string; heading: string; body: string };
+
 export type Labels = {
   nav: {
     items: NavItem[];
@@ -58,6 +61,15 @@ export type Labels = {
     softSkillsTitle: string;
     interestsTitle: string;
     metrics: HomeMetric[];
+    journey: {
+      title: string;
+      subtitle: string;
+      stages: JourneyStage[];
+    };
+    featured: {
+      title: string;
+      cta: string;
+    };
   };
   experience: {
     title: string;
@@ -90,6 +102,9 @@ export type Labels = {
   skills: {
     title: string;
     subtitle: string;
+    dailyUse: string;
+    learning: string;
+    certificationsTitle: string;
   };
   certifications: {
     title: string;
@@ -137,6 +152,10 @@ export type Labels = {
     light: string;
     dark: string;
     buttonLabel: string;
+  };
+  nextStep: {
+    kicker: string;
+    ctaContact: string;
   };
 };
 
@@ -198,7 +217,7 @@ const frenchContent: PortfolioContent = {
         "Développement de pipelines ETL sous Databricks (PySpark) traitant plusieurs millions de réclamations/an avec une architecture Medallion (Bronze/Silver/Gold).",
         "Orchestration de 6 notebooks via Databricks Workflows avec un temps d'exécution optimisé à 7 minutes en batch mensuel.",
         "Implémentation de la gouvernance des données via Unity Catalog et stockage sur Delta Lake / Azure Storage.",
-        // "Création d'un tableau de bord pour le pilotage des Services d'Aide à Domicile, consolidant les données de financeurs multiples (CAF, Départements, CPAM).",
+        "Conception et déploiement d'un second tableau de bord Power BI (Adonis) pour le suivi des interventions des services d'aide à domicile, menées par les CAF et leurs partenaires auprès des collectivités et des familles.",
         "Revue et standardisation de notebooks Python/Spark existants : amélioration des performances et respect des bonnes pratiques.",
         "Réalisation d'un POC Databricks AI/BI (Genie Room) : évaluation des capacités de requêtage en langage naturel, recommandations adoptées par l'équipe.",
         "Collaboration avec les équipes MOA/AMOA ; versioning et maintenance des pipelines via Git (Azure DevOps).",
@@ -261,6 +280,23 @@ const frenchContent: PortfolioContent = {
     },
   ],
   projects: [
+    {
+      name: "Tableau de bord Adonis",
+      org: "CNAF - Alternance",
+      role: "Data Engineer et référente BI",
+      period: "2026",
+      summary:
+        "Dans la continuité du tableau de bord des réclamations, j'ai conçu Adonis : le suivi des interventions des services d'aide à domicile, menées par les CAF et leurs partenaires auprès des collectivités et des familles.",
+      bullets: [
+        "Consolidation des données d'interventions d'aide à domicile (CAF et partenaires) sur Databricks et Delta Lake",
+        "Modélisation et publication d'un tableau de bord Power BI pour suivre les interventions auprès des collectivités et des familles",
+        "Réutilisation de l'architecture Medallion et des pipelines déjà en place pour les réclamations",
+      ],
+      cover: adonisDashboard,
+      gallery: [adonisDashboard],
+      stack: ["Databricks", "Spark", "Python", "Power BI"],
+      videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
+    },
     {
       name: "Tableau de bord des réclamations",
       org: "CNAF - Alternance",
@@ -381,7 +417,7 @@ const frenchContent: PortfolioContent = {
         { name: "Spark", detail: "Optimisation des transformations batch et streaming." },
         { name: "Python", detail: "Mon langage principal : scripts, notebooks, APIs" },
         { name: "Power BI", detail: "Modélisation DAX, Power Query; Je conçois des dashboards utilisés par des centaines de personnes" },
-        { name: "Airflow", detail: "Orchestration CI/CD et senseurs multi-sources -  utilisé sur un projet académique" },
+        { name: "Airflow", detail: "Orchestration CI/CD et capteurs multi-sources — pour l'instant sur un projet académique." },
         { name: "Dbt", detail: "En cours d'apprentissage pour mes projets perso" },
         { name: "Azure", detail: "Storage, Data Factory et DevOps pour le monitoring." },
         { name: "Docker", detail: "Environnements reproductibles pour notebooks et APIs." },
@@ -418,7 +454,7 @@ const frenchContent: PortfolioContent = {
       metricsTitle: "Ce que j'ai livré",
       metricsSubtitle: "Quelques résultats concrets.",
       aboutTitle: "À propos de moi",
-      aboutText: "Camerounaise, ingénieure, et passionnée de données. J'ai grandi à Yaoundé, étudié l'informatique entre le Cameroun et la France ( Belfort, Rennes), et découvert la data un peu par hasard -  lors d'un cours de Data Mining en 3ème année. Ce qui m'a accrochée : le côté concret. Quand je livre un dashboard, je vois des gens s'en servir pour prendre des décisions. C'est cette boucle \"données → décision → impact\" qui me motive.",
+      aboutText: "Camerounaise, ingénieure, passionnée de données. J'ai grandi à Yaoundé, puis étudié l'informatique entre le Cameroun et la France, à Belfort et Rennes. La data, je l'ai découverte un peu par hasard, pendant un cours de Data Mining en 3ᵉ année - et ce qui m'a accrochée, c'est le concret. Quand je livre un dashboard, je vois ensuite des gens s'en servir pour prendre des décisions. C'est cette boucle « données → décision → impact » qui me fait avancer.",
       languagesTitle: "Langues",
       softSkillsTitle: "Atouts",
       interestsTitle: "Centres d’intérêt",
@@ -427,6 +463,32 @@ const frenchContent: PortfolioContent = {
         { label: "Technologies utilisées", valueKey: "stackCount" },
         { label: "Pipelines de données", valueKey: "pipelineCount" },
       ],
+      journey: {
+        title: "De la donnée brute à la décision",
+        subtitle:
+          "L'architecture Medallion, c'est ma signature technique. C'est aussi une assez bonne façon de résumer ce que je fais.",
+        stages: [
+          {
+            tier: "Bronze",
+            heading: "La donnée brute",
+            body: "Des millions de lignes, des fichiers venus de partout, des formats qui ne se parlent pas.",
+          },
+          {
+            tier: "Silver",
+            heading: "Je structure et je fiabilise",
+            body: "Je nettoie, je modélise, je teste, je documente. La donnée devient claire et digne de confiance.",
+          },
+          {
+            tier: "Gold",
+            heading: "La décision",
+            body: "101 caisses qui pilotent leurs réclamations chaque mois. Des équipes qui décident avec ce que j'ai livré.",
+          },
+        ],
+      },
+      featured: {
+        title: "Projets phares",
+        cta: "Voir tous les projets",
+      },
     },
     experience: {
       title: "Expériences professionnelles",
@@ -459,6 +521,9 @@ const frenchContent: PortfolioContent = {
     skills: {
       title: "Compétences",
       subtitle: "Ce que je livre et les outils que j'utilise.",
+      dailyUse: "Utilisé au quotidien",
+      learning: "En apprentissage",
+      certificationsTitle: "Certifications obtenues",
     },
     certifications: {
       title: "Certifications",
@@ -507,7 +572,11 @@ const frenchContent: PortfolioContent = {
     theme: {
       light: "Clair",
       dark: "Sombre",
-      buttonLabel: "Changer le thème -  actuel : {{label}}",
+      buttonLabel: "Changer le thème — actuel : {{label}}",
+    },
+    nextStep: {
+      kicker: "Étape suivante",
+      ctaContact: "Me contacter directement",
     },
   },
   pipelinesCount: 5,
@@ -518,24 +587,24 @@ const englishContent: PortfolioContent = {
     name: "Ange Francine FORKOU",
     title: "Data Engineer & BI Developer",
     tagline: "I turn millions of rows into dashboards people actually use.",
-    bio: "Currently in a work-study program at CNAF, I design data pipelines and dashboards that help 101 French family allowance offices manage their complaints. Databricks, PySpark, Power BI, Azure -  that's been my daily stack for 2 years. And I document everything I learn along the way.",
+    bio: "I'm a Data Engineer on a work-study contract at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years — and I write about what I learn along the way.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
     phone: "+33 6 95 27 78 30",
     linkedin: "https://www.linkedin.com/in/forkou-francine",
     github: "https://github.com/Forkou-francine",
     medium: "https://medium.com/@francineforkou",
-    cvUrl: "/cv-ange-francine-forkou.pdf",
+    cvUrl: "/CV_Data_Francine_FORKOU.pdf",
     heroPhoto,
     languages: [
       { name: "French", level: "Native" },
       { name: "English", level: "C1+ (TOEIC 950/990, BULATS 98/100)" },
     ],
     softSkills: [
-      "I translate -Business needs into SQL queries and readable dashboards",
-      "I dig deep -  I don't let go of a bug until I understand the why",
-      "I deliver -  My pipelines have been running in prod monthly for 1 year",
-      "I share -  I've trained 100 business users on my tools",
+      "I explain - I've trained business teams to actually use my dashboards",
+      "I ship - My pipelines have run in production every month for a year",
+      "I collaborate - Five years as a class rep leaves a mark",
+      "I translate - Business needs into clean SQL and dashboards people can read",
     ],
     interests: ["Technology & data trends", "Entrepreneurship", "Volunteering"],
   },
@@ -547,11 +616,11 @@ const englishContent: PortfolioContent = {
       period: "Sept. 2024 - Sept. 2026",
       bullets: [
         "Complete overhaul of the national complaints tracking system: replaced an aging SAS application with a Power BI dashboard used by 101 CAF offices and 500+ users",
-        "Developed ETL pipelines on Databricks (PySpark) -  millions of complaints processed yearly, Medallion architecture (Bronze/Silver/Gold)",
-        "Orchestrated 4 notebooks with Databricks Workflows: monthly execution optimized to 5-7 minutes",
+        "Developed ETL pipelines on Databricks (PySpark) processing millions of complaints a year, on a Medallion architecture (Bronze/Silver/Gold)",
+        "Orchestrated 6 notebooks with Databricks Workflows: monthly execution optimized to 7 minutes",
         "Implemented data governance: Unity Catalog for access control, Delta Lake for storage, Azure Storage for persistence",
-        // "Created a second dashboard to monitor Home Care Services (SAAD), consolidating data from multiple funders (CAF, Departments, CPAM)",
-        "Trained business users on dashboard adoption -  workshops, documentation, support",
+        "Designed and deployed a second Power BI dashboard (Adonis) to track home-care service interventions run by the CAF offices and their partners for local authorities and individual families",
+        "Trained business users to adopt the dashboards through workshops, documentation and hands-on support",
         "Reviewed and standardized existing Python/Spark notebooks: performance optimization, best practices",
         "Databricks AI/BI POC (Genie Room): tested natural language querying capabilities, wrote recommendations adopted by the team",
         "Daily collaboration with MOA/AMOA teams; Git versioning via Azure DevOps",
@@ -593,6 +662,23 @@ const englishContent: PortfolioContent = {
   ],
   certifications: frenchContent.certifications,
   projects: [
+    {
+      name: "Adonis Dashboard",
+      org: "CNAF - Apprenticeship",
+      role: "Data Engineer & BI Lead",
+      period: "2026",
+      summary:
+        "Building on the complaints dashboard, I designed Adonis: a tracker for the home-care service interventions run by the CAF offices and their partners for local authorities and individual families.",
+      bullets: [
+        "Consolidated home-care intervention data (CAF and partners) on Databricks and Delta Lake",
+        "Modelled and published a Power BI dashboard to track interventions for local authorities and families",
+        "Reused the Medallion architecture and pipelines already in place for the complaints dashboard",
+      ],
+      cover: adonisDashboard,
+      gallery: [adonisDashboard],
+      stack: ["Databricks", "Spark", "Python", "Power BI"],
+      videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
+    },
     {
       name: "National Complaints Dashboard",
       org: "CNAF - Apprenticeship",
@@ -687,7 +773,7 @@ const englishContent: PortfolioContent = {
       items: [
         {
           name: "Power BI dashboards",
-          detail: "From KPI scoping to workspace publishing and governance -  dashboards used by hundreds of people",
+          detail: "From KPI scoping to workspace publishing and governance — dashboards used by hundreds of people.",
         },
         {
           name: "Databricks pipelines",
@@ -711,11 +797,11 @@ const englishContent: PortfolioContent = {
         { name: "Spark", detail: "Optimising batch and streaming transformations." },
         { name: "Python", detail: "Dataframes, PySpark testing, and packaging best practices." },
         { name: "Power BI", detail: "DAX modelling, Power Query, and dynamic parameters." },
-        { name: "Airflow", detail: "Used on an academic project -  still learning" },
+        { name: "Airflow", detail: "Used on an academic project — still learning it." },
         { name: "Dbt", detail: "Currently learning on personal projects"},
         { name: "Azure", detail: "Storage, Data Factory, and DevOps monitoring." },
         { name: "Docker", detail: "Reproducible environments for notebooks and APIs." },
-        { name: "Hadoop", detail: "Distributed processing for large volumes." },
+        { name: "Hadoop", detail: "Used in an academic setting (HDFS, ecosystem)." },
       ],
     },
   ],
@@ -748,7 +834,7 @@ const englishContent: PortfolioContent = {
       metricsTitle: "What I've delivered",
       metricsSubtitle: "A few results that illustrate what I deliver.",
       aboutTitle: "About me",
-      aboutText: "Cameroonian, engineer, and passionate about data. I grew up in Yaoundé, studied computer science between Cameroon and France (Belfort, Rennes), and discovered data almost by accident -  during a Data Mining course in my third year. What hooked me: the tangible impact. When I deliver a dashboard, I see people use it to make decisions. That \"data → decision → impact\" loop is what drives me.",
+      aboutText: "Cameroonian, engineer, data enthusiast. I grew up in Yaoundé, then studied computer science between Cameroon and France, in Belfort and Rennes. I stumbled into data almost by accident, during a Data Mining course in my third year — and what hooked me was the tangible side of it. When I ship a dashboard, I get to watch people use it to make decisions. That \"data → decision → impact\" loop is what keeps me going.",
       languagesTitle: "Languages",
       softSkillsTitle: "How I work",
       interestsTitle: "Interests",
@@ -757,6 +843,32 @@ const englishContent: PortfolioContent = {
         { label: "The tools I operate on", valueKey: "stackCount" },
         { label: "Data pipelines", valueKey: "pipelineCount" },
       ],
+      journey: {
+        title: "From raw data to decisions",
+        subtitle:
+          "The Medallion architecture is my technical signature. It's also a pretty good way to sum up what I do.",
+        stages: [
+          {
+            tier: "Bronze",
+            heading: "Raw data",
+            body: "Millions of rows, files coming from everywhere, formats that don't talk to each other.",
+          },
+          {
+            tier: "Silver",
+            heading: "I structure and harden it",
+            body: "I clean, model, test and document. The data becomes clear and trustworthy.",
+          },
+          {
+            tier: "Gold",
+            heading: "The decision",
+            body: "101 offices tracking their complaints every month. Teams deciding with what I've shipped.",
+          },
+        ],
+      },
+      featured: {
+        title: "Featured projects",
+        cta: "See all projects",
+      },
     },
     experience: {
       title: "Professional experience",
@@ -789,6 +901,9 @@ const englishContent: PortfolioContent = {
     skills: {
       title: "Skills",
       subtitle: "What I deliver and the tools I use.",
+      dailyUse: "Used daily",
+      learning: "Currently learning",
+      certificationsTitle: "Certifications earned",
     },
     certifications: {
       title: "Certifications",
@@ -813,7 +928,7 @@ const englishContent: PortfolioContent = {
         "I love co-building data products that are useful. Need a dashboard, a reliable pipeline, or a question about data governance? I'd be happy to discuss.",
       searchTitle: "What I'm looking for",
       searchBody:
-        "A permanent Data Engineering or BI position starting September 2026, ideally in Lyon. In the meantime, open to acceleration workshops on your pipelines and dashboards.",
+        "A permanent Data Engineering or BI position starting November 2026, ideally in Lyon. In the meantime, open to acceleration workshops on your pipelines and dashboards.",
       emailLink: "Send an email",
       phoneLink: "Call",
     },
@@ -837,7 +952,11 @@ const englishContent: PortfolioContent = {
     theme: {
       light: "Light",
       dark: "Dark",
-      buttonLabel: "Switch theme -  current: {{label}}",
+      buttonLabel: "Switch theme — current: {{label}}",
+    },
+    nextStep: {
+      kicker: "Up next",
+      ctaContact: "Get in touch directly",
     },
   },
   pipelinesCount: 5,

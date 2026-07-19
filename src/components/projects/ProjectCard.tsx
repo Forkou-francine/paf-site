@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useState, useEffect } from "react";
 import VideoModal from "./VideoModal";
 import { FiExternalLink, FiPlay } from "react-icons/fi";
@@ -113,7 +113,7 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
 
   return (
     <>
-      <motion.article
+      <m.article
         className="overflow-hidden rounded-2xl bg-white ring-1 ring-zinc-200 dark:bg-slate-800 dark:ring-slate-700"
         initial={{ y: 16, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -225,7 +225,7 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
             </div>
           )}
         </div>
-      </motion.article>
+      </m.article>
 
       {/* Video Modal - utilise ton composant existant */}
       {hasVideo && (

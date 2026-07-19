@@ -1,8 +1,12 @@
+import { useState } from "react";
 import SocialLinks from "../ui/SocialLinks";
+import MedallionJourney from "../ui/MedallionJourney";
+import ProjectCard from "../projects/ProjectCard";
+import Lightbox from "../projects/LightBox";
 import { Link } from "react-router-dom";
 import { colors, techLogos } from "../../data/content";
 import { usePortfolioContent } from "../../hooks/usePortfolioContent";
-import { FiMessageSquare, FiSearch, FiCheckCircle, FiUsers } from "react-icons/fi";
+import { FiMessageSquare, FiSearch, FiCheckCircle, FiUsers, FiArrowRight } from "react-icons/fi";
 
 const floatingTechs = [
   { name: "Databricks", abbr: "DB", position: "top-4 right-4", delay: 0 },
@@ -14,20 +18,31 @@ const floatingTechs = [
 const workStyleIcons = [FiMessageSquare, FiSearch, FiCheckCircle, FiUsers];
 
 export default function Home() {
-  const { profile, labels } = usePortfolioContent();
+  const { profile, labels, projects } = usePortfolioContent();
+
+  // Titre affiché sur deux lignes, dérivé du titre traduit (ex. "Data Engineer & Développeuse BI")
+  const [roleLead, roleAccent] = profile.title.split(" & ");
+
+  // Aperçu des 2 projets phares (les plus récents en tête de liste).
+  const featuredProjects = projects.slice(0, 2);
+
+  // Lightbox pour les galeries des projets phares.
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+  const openLightbox = (images: string[], index = 0) => {
+    if (images.length) setLightbox({ images, index });
+  };
+  const closeLightbox = () => setLightbox(null);
+  const prevImage = () =>
+    setLightbox((current) =>
+      current ? { ...current, index: (current.index - 1 + current.images.length) % current.images.length } : current,
+    );
+  const nextImage = () =>
+    setLightbox((current) =>
+      current ? { ...current, index: (current.index + 1) % current.images.length } : current,
+    );
 
   return (
     <div>
-      {/* Background gradients */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        {/* Large purple gradient on the left */}
-        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-300/25 via-fuchsia-200/15 to-transparent blur-3xl" />
-        {/* Soft blue gradient on the right */}
-        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-sky-50/10 to-transparent blur-3xl" />
-        {/* Additional soft purple accent */}
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-200/15 blur-3xl" />
-      </div>
-
       <section className="relative overflow-hidden">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-4 py-16 md:grid-cols-2">
           <div>
@@ -42,9 +57,9 @@ export default function Home() {
               {profile.name}
             </h1>
             <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight md:text-5xl">
-              <span className="block">Data Engineer</span>
+              <span className="block">{roleLead}</span>
               <span className="block bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                & Développeuse BI
+                &amp; {roleAccent}
               </span>
             </h1>
             <p className="mt-2 text-lg text-zinc-600 dark:text-slate-400">{profile.tagline}</p>
@@ -53,13 +68,13 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/projects"
-                className={`rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-5 py-2.5 font-semibold text-white shadow-sm`}
+                className={`rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-5 py-2.5 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-600/25`}
               >
                 {labels.home.primaryCta}
               </Link>
               <Link
                 to="/contact"
-                className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 dark:bg-slate-800/80 dark:text-slate-100 dark:ring-slate-700"
+                className="rounded-xl bg-white/80 px-5 py-2.5 font-semibold ring-1 ring-zinc-200 transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-md dark:bg-slate-800/80 dark:text-slate-100 dark:ring-slate-700 dark:hover:bg-slate-800"
               >
                 {labels.home.secondaryCta}
               </Link>
@@ -75,6 +90,7 @@ export default function Home() {
                 className="h-full w-full object-cover"
                 decoding="async"
                 loading="eager"
+                fetchPriority="high"
                 width={768}
                 height={768}
               />
@@ -97,6 +113,39 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Parcours Medallion : de la donnée brute à la décision */}
+      <MedallionJourney
+        title={labels.home.journey.title}
+        subtitle={labels.home.journey.subtitle}
+        stages={labels.home.journey.stages}
+      />
+
+      {/* Projets phares : aperçu des réalisations les plus récentes */}
+      <section className="mx-auto max-w-6xl px-4 py-16">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <h2 className="font-display text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-slate-100 sm:text-4xl">
+            {labels.home.featured.title}
+          </h2>
+          <Link
+            to="/projects"
+            className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-violet-600 dark:text-violet-400"
+          >
+            {labels.home.featured.cta}
+            <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <ProjectCard
+              key={project.name}
+              project={project}
+              labels={labels.projectCard}
+              onOpen={openLightbox}
+            />
+          ))}
         </div>
       </section>
 
@@ -158,6 +207,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          index={lightbox.index}
+          onClose={closeLightbox}
+          onPrev={prevImage}
+          onNext={nextImage}
+          labels={labels.projects.lightbox}
+        />
+      )}
     </div>
   );
 }

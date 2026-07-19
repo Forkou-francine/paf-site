@@ -6,13 +6,6 @@ export default function Education() {
 
   return (
     <div className="relative">
-      {/* Background gradients */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-300/25 via-fuchsia-200/15 to-transparent blur-3xl" />
-        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-sky-50/10 to-transparent blur-3xl" />
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-200/15 blur-3xl" />
-      </div>
-
       <Section title={labels.education.title} subtitle={labels.education.subtitle}>
         <ol className="relative ml-3 space-y-6 border-l border-zinc-200 pl-6 dark:border-slate-800">
         {education.map((entry) => (

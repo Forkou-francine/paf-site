@@ -1,12 +1,14 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { AnimatePresence, motion, type Transition } from "framer-motion";
+import { AnimatePresence, LazyMotion, MotionConfig, domAnimation, m, type Transition } from "framer-motion";
 import { ThemeProvider } from "./hooks/ThemeProvider";
 import { LanguageProvider, useLanguage } from "./hooks/LanguageProvider";
 import ScrollToTop from "./router/ScrollToTop";
 
 import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/ui/Footer";
+import Background from "./components/ui/Background";
+import NextStep from "./components/ui/NextStep";
 
 const Home = lazy(() => import("./components/pages/Home"));
 const Experience = lazy(() => import("./components/pages/Experience"));
@@ -56,15 +58,18 @@ export default function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
+        <LazyMotion features={domAnimation} strict>
+        <MotionConfig reducedMotion="user">
         <div className="min-h-screen text-zinc-900 dark:text-slate-100">
           <SkipLink />
           <div className="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-white to-zinc-50 dark:from-slate-950 dark:to-slate-900" />
+          <Background />
 
           <Navbar />
           <ScrollToTop />
 
           <AnimatePresence mode="wait" initial={false}>
-            <motion.main
+            <m.main
               id="main-content"
               key={location.pathname}
               initial={{ opacity: 0, y: 8 }}
@@ -85,11 +90,14 @@ export default function App() {
                   <Route path="*" element={<Home />} />
                 </Routes>
               </Suspense>
-            </motion.main>
+              <NextStep />
+            </m.main>
           </AnimatePresence>
 
           <Footer />
         </div>
+        </MotionConfig>
+        </LazyMotion>
       </ThemeProvider>
     </LanguageProvider>
   );

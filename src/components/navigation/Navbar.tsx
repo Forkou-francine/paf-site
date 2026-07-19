@@ -49,7 +49,7 @@ export default function Navbar() {
             <a
               href={profile.cvUrl}
               download="CV_Data_Francine_FORKOU.pdf"
-              className="ml-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm"
+              className="ml-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-3 py-1.5 text-sm font-medium text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-violet-600/25"
             >
               {labels.nav.downloadCv}
             </a>

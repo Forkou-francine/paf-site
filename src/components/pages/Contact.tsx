@@ -3,20 +3,15 @@ import Section from "../ui/Section";
 import { colors } from "../../data/content";
 import { usePortfolioContent } from "../../hooks/usePortfolioContent";
 
-const FORMSPREE_ID = ""; // Ajoute ton ID Formspree si tu en utilises un.
+// ID Formspree lu depuis la variable d'environnement VITE_FORMSPREE_ID.
+// Non défini → le formulaire retombe proprement sur un lien mailto.
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID ?? "";
 
 export default function Contact() {
   const { profile, labels } = usePortfolioContent();
 
   return (
     <div className="relative">
-      {/* Background gradients */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-300/25 via-fuchsia-200/15 to-transparent blur-3xl" />
-        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-sky-50/10 to-transparent blur-3xl" />
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-200/15 blur-3xl" />
-      </div>
-
       <Section title={labels.contact.title} subtitle={labels.contact.subtitle}>
       <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
         <div className="grid gap-8 md:grid-cols-2">
@@ -163,7 +158,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className={`w-full rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-4 py-2 font-semibold text-white shadow-sm disabled:opacity-60`}
+        className={`w-full rounded-xl bg-gradient-to-r ${colors.primaryFrom} ${colors.primaryTo} px-4 py-2 font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-violet-600/25 disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-sm`}
       >
         {status === "sending" ? labels.contactForm.submitSending : labels.contactForm.submitIdle}
       </button>

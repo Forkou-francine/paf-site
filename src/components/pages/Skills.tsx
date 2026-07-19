@@ -35,17 +35,10 @@ export default function Skills() {
 
   return (
     <div className="relative">
-      {/* Background gradients */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -left-32 top-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-violet-300/25 via-fuchsia-200/15 to-transparent blur-3xl" />
-        <div className="absolute -right-32 bottom-0 h-[500px] w-[500px] rounded-full bg-gradient-to-tl from-indigo-100/20 via-sky-50/10 to-transparent blur-3xl" />
-        <div className="absolute left-1/4 top-1/3 h-64 w-64 rounded-full bg-violet-200/15 blur-3xl" />
-      </div>
-
       <Section title={labels.skills.title} subtitle={labels.skills.subtitle}>
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Left card - Solutions livrées */}
-        <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+        <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 transition-all duration-200 hover:shadow-lg hover:ring-violet-300 dark:bg-slate-900/70 dark:ring-slate-700 dark:hover:ring-violet-500/50">
           <h3 className="text-xl font-bold text-zinc-900 dark:text-slate-100">
             {solutions?.category || "Solutions livrées"}
           </h3>
@@ -78,7 +71,7 @@ export default function Skills() {
         </div>
 
         {/* Right card - Technologies et outils */}
-        <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 dark:bg-slate-900/70 dark:ring-slate-700">
+        <div className="rounded-2xl bg-white/80 p-6 ring-1 ring-zinc-200 transition-all duration-200 hover:shadow-lg hover:ring-violet-300 dark:bg-slate-900/70 dark:ring-slate-700 dark:hover:ring-violet-500/50">
           <h3 className="text-xl font-bold text-zinc-900 dark:text-slate-100">
             {techTools?.category || "Technologies et outils"}
           </h3>
@@ -89,7 +82,7 @@ export default function Skills() {
           {/* Utilisé au quotidien */}
           <div className="mt-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-slate-500">
-              Utilisé au quotidien
+              {labels.skills.dailyUse}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {masteredTechs.map((tech) => (
@@ -111,7 +104,7 @@ export default function Skills() {
           {/* En apprentissage */}
           <div className="mt-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 dark:text-slate-500">
-              En apprentissage
+              {labels.skills.learning}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
               {learningTechs.map((tech) => (
@@ -134,7 +127,7 @@ export default function Skills() {
           <div className="mt-6 rounded-xl bg-violet-50 p-4 dark:bg-violet-900/20">
             <div className="flex items-center gap-2">
               <FiAward className="h-5 w-5 text-violet-600 dark:text-violet-400" />
-              <p className="font-semibold text-zinc-900 dark:text-slate-100">Certifications obtenues</p>
+              <p className="font-semibold text-zinc-900 dark:text-slate-100">{labels.skills.certificationsTitle}</p>
             </div>
             <div className="mt-3 space-y-2">
               {certifications.map((cert) => (
