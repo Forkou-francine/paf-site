@@ -57,7 +57,8 @@ function ContactForm() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     const data = Object.fromEntries(fd.entries());
     if (!data.name || !data.email || !data.message) return;
 
@@ -72,13 +73,17 @@ function ContactForm() {
         if (res.ok) {
           setStatus("ok");
           setMessage(labels.contactForm.success);
-          (e.currentTarget as HTMLFormElement).reset();
+          form.reset();
         } else {
-          const json = await res.json();
+          // Formspree renvoie ses erreurs dans un tableau `errors`.
+          const json = await res.json().catch(() => null);
+          const detail = json?.errors?.[0]?.message ?? json?.error;
           setStatus("error");
-          setMessage(json?.error || labels.contactForm.error);
+          setMessage(detail || labels.contactForm.error);
         }
-      } catch {
+      } catch (err) {
+        // Échec réseau (bloqueur de pub, hors-ligne, CORS…) : on trace la vraie cause.
+        console.error("Formspree submission failed:", err);
         setStatus("error");
         setMessage(labels.contactForm.fallback);
       }
