@@ -62,7 +62,9 @@ export default function Home() {
                 &amp; {roleAccent}
               </span>
             </h1>
-            <p className="mt-2 text-lg text-zinc-600 dark:text-slate-400">{profile.tagline}</p>
+            {profile.tagline && (
+              <p className="mt-2 text-lg text-zinc-600 dark:text-slate-400">{profile.tagline}</p>
+            )}
             <p className="mt-4 max-w-prose text-zinc-700 dark:text-slate-300">{profile.bio}</p>
             <SocialLinks withEmail />
             <div className="mt-8 flex flex-wrap gap-3">

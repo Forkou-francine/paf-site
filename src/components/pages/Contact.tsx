@@ -5,7 +5,7 @@ import { usePortfolioContent } from "../../hooks/usePortfolioContent";
 
 // ID Formspree lu depuis la variable d'environnement VITE_FORMSPREE_ID.
 // Non défini → le formulaire retombe proprement sur un lien mailto.
-const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID ?? "";
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID ?? "mpqvrqae";
 
 export default function Contact() {
   const { profile, labels } = usePortfolioContent();
@@ -22,14 +22,6 @@ export default function Contact() {
             <p className="mt-2 max-w-prose text-sm text-zinc-700 dark:text-slate-300">
               {labels.contact.intro}
             </p>
-            <div className="mt-4 rounded-xl bg-white/70 p-4 ring-1 ring-dashed ring-violet-400 dark:bg-slate-900/60 dark:ring-violet-500/60">
-              <span className="text-xs font-semibold uppercase tracking-wide text-violet-600 dark:text-violet-300">
-                {labels.contact.searchTitle}
-              </span>
-              <p className="mt-1 text-sm text-zinc-700 dark:text-slate-300">
-                {labels.contact.searchBody}
-              </p>
-            </div>
             <div className="mt-4 flex flex-col items-start gap-3 text-sm">
               <a
                 href={`mailto:${profile.email}`}

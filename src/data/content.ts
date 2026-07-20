@@ -126,8 +126,6 @@ export type Labels = {
     subtitle: string;
     headline: string;
     intro: string;
-    searchTitle: string;
-    searchBody: string;
     emailLink: string;
     phoneLink: string;
   };
@@ -447,7 +445,7 @@ const frenchContent: PortfolioContent = {
       },
     },
     home: {
-      availability: "À l’écoute d’opportunités",
+      availability: "Data Engineer @ CNAF",
       primaryCta: "Voir mes projets",
       secondaryCta: "Me contacter",
       metricsTitle: "Ce que j'ai livré",
@@ -545,9 +543,6 @@ const frenchContent: PortfolioContent = {
       headline: "Discutons de vos projets",
       intro:
         "J’aime co-construire des produits data utiles et pilotables. Une idée de dashboard, un pipeline à fiabiliser ou une question sur la gouvernance de la donnée ? Je serais ravie d’en discuter.",
-      searchTitle: "Ce que je cherche",
-      searchBody:
-        "Un CDI en Data Engineering ou BI à partir de novembre 2026, idéalement à Lyon. En attendant, ouverte aux ateliers d'accélération sur vos pipelines et tableaux de bord.",
       emailLink: "Écrire un email",
       phoneLink: "Appeler",
     },
@@ -586,7 +581,7 @@ const englishContent: PortfolioContent = {
     name: "Ange Francine FORKOU",
     title: "Data Engineer & BI Developer",
     tagline: "",
-    bio: "I'm a Data Engineer on a work-study contract at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years — and I write about what I learn along the way.",
+    bio: "I'm a Data Engineer at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years — and I write about what I learn along the way.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
     phone: "+33 6 95 27 78 30",
@@ -826,7 +821,7 @@ const englishContent: PortfolioContent = {
       },
     },
     home: {
-      availability: "Open to opportunities",
+      availability: "Data Engineer @ CNAF",
       primaryCta: "View my projects",
       secondaryCta: "Get in touch",
       metricsTitle: "What I've delivered",
@@ -924,9 +919,6 @@ const englishContent: PortfolioContent = {
       headline: "Let's discuss your projects",
       intro:
         "I love co-building data products that are useful. Need a dashboard, a reliable pipeline, or a question about data governance? I'd be happy to discuss.",
-      searchTitle: "What I'm looking for",
-      searchBody:
-        "A permanent Data Engineering or BI position starting November 2026, ideally in Lyon. In the meantime, open to acceleration workshops on your pipelines and dashboards.",
       emailLink: "Send an email",
       phoneLink: "Call",
     },
