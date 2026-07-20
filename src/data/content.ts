@@ -184,8 +184,8 @@ const frenchContent: PortfolioContent = {
   profile: {
     name: "Ange Francine FORKOU",
     title: "Data Engineer & Développeuse BI",
-    tagline: "Je transforme des millions de lignes en tableaux de bord que les gens utilisent vraiment.",
-    bio: "En alternance à la CNAF, je conçois les pipelines de données et dashboards qui aident 101 caisses d'allocations familiales à piloter leurs réclamations. Databricks, PySpark, Power BI, Azure : c'est mon quotidien depuis 2 ans.",
+    tagline: "",
+    bio: "Data Engineer à la CNAF, je conçois les pipelines de données et dashboards qui aident 101 caisses d'allocations familiales à piloter leurs réclamations. Databricks, PySpark, Power BI, Azure : c'est mon quotidien depuis 2 ans.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
     phone: "+33 6 95 27 78 30",
@@ -586,7 +586,7 @@ const englishContent: PortfolioContent = {
   profile: {
     name: "Ange Francine FORKOU",
     title: "Data Engineer & BI Developer",
-    tagline: "I turn millions of rows into dashboards people actually use.",
+    tagline: "",
     bio: "I'm a Data Engineer on a work-study contract at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years — and I write about what I learn along the way.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
