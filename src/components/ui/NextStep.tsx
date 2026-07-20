@@ -4,7 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { usePortfolioContent } from "../../hooks/usePortfolioContent";
 
 // Parcours guidé : chaque page pointe vers la suivante, tout converge vers Contact.
-const ORDER = ["/", "/projects", "/experience", "/skills", "/education", "/contact"];
+const ORDER = ["/", "/projects", "/experience", "/education", "/contact"];
 
 export default function NextStep() {
   const { pathname } = useLocation();

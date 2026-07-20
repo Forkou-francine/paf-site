@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SocialLinks from "../ui/SocialLinks";
-import MedallionJourney from "../ui/MedallionJourney";
+import Solutions from "../ui/Solutions";
 import ProjectCard from "../projects/ProjectCard";
 import Lightbox from "../projects/LightBox";
 import { Link } from "react-router-dom";
@@ -23,8 +23,8 @@ export default function Home() {
   // Titre affiché sur deux lignes, dérivé du titre traduit (ex. "Data Engineer & Développeuse BI")
   const [roleLead, roleAccent] = profile.title.split(" & ");
 
-  // Aperçu des 2 projets phares (les plus récents en tête de liste).
-  const featuredProjects = projects.slice(0, 2);
+  // Aperçu des 3 projets phares (les plus récents en tête de liste).
+  const featuredProjects = projects.slice(0, 3);
 
   // Lightbox pour les galeries des projets phares.
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
@@ -116,13 +116,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Parcours Medallion : de la donnée brute à la décision */}
-      <MedallionJourney
-        title={labels.home.journey.title}
-        subtitle={labels.home.journey.subtitle}
-        stages={labels.home.journey.stages}
-      />
-
       {/* Projets phares : aperçu des réalisations les plus récentes */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="mb-8 flex items-end justify-between gap-4">
@@ -137,13 +130,14 @@ export default function Home() {
             <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featuredProjects.map((project) => (
             <ProjectCard
               key={project.name}
               project={project}
               labels={labels.projectCard}
               onOpen={openLightbox}
+              compact
             />
           ))}
         </div>
@@ -152,13 +146,16 @@ export default function Home() {
       {/* About Section */}
       <section className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-12 md:grid-cols-2">
-          {/* Left - About text */}
+          {/* Left - About text + solutions livrées */}
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-violet-600 dark:text-violet-400">
               {labels.home.aboutTitle}
             </span>
             <div className="mt-6 space-y-4 text-zinc-600 dark:text-slate-400">
               <p>{labels.home.aboutText}</p>
+            </div>
+            <div className="mt-8">
+              <Solutions />
             </div>
           </div>
 

@@ -431,10 +431,9 @@ const frenchContent: PortfolioContent = {
   labels: {
     nav: {
       items: [
-        { to: "/", label: "Accueil" },
+        { to: "/", label: "À propos" },
         { to: "/experience", label: "Expériences" },
         { to: "/projects", label: "Projets" },
-        { to: "/skills", label: "Compétences" },
         { to: "/education", label: "Formation" },
         //{ to: "/recommendations", label: "Recommandations" },
         { to: "/contact", label: "Contact" },
@@ -811,10 +810,9 @@ const englishContent: PortfolioContent = {
   labels: {
     nav: {
       items: [
-        { to: "/", label: "Home" },
+        { to: "/", label: "About" },
         { to: "/experience", label: "Experience" },
         { to: "/projects", label: "Projects" },
-        { to: "/skills", label: "Skills" },
         { to: "/education", label: "Education" },
         //{ to: "/recommendations", label: "Recommendations" },
         { to: "/contact", label: "Contact" },

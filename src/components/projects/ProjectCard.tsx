@@ -9,6 +9,8 @@ type Props = {
   project: Project;
   labels: Labels["projectCard"];
   onOpen: (images: string[], index?: number) => void;
+  /** Variante allégée (moins de padding/texte) pour l'aperçu du Home. */
+  compact?: boolean;
 };
 
 // Organization color configurations
@@ -63,8 +65,12 @@ const getEmbedUrl = (url: string): string => {
   return url;
 };
 
-export default function ProjectCard({ project, labels, onOpen }: Props) {
+export default function ProjectCard({ project, labels, onOpen, compact = false }: Props) {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  // En mode compact on limite les tags affichés pour garder la carte courte.
+  const visibleStack = compact ? project.stack.slice(0, 3) : project.stack;
+  const hiddenStackCount = project.stack.length - visibleStack.length;
 
   // Ferme le modal avec la touche Échap et bloque le scroll
   useEffect(() => {
@@ -158,7 +164,7 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
               )}
             </div>
           ) : (
-            <div className={`h-24 w-full ${orgStyle.banner}`} />
+            <div className={`${compact ? "h-20" : "h-24"} w-full ${orgStyle.banner}`} />
           )}
 
           {/* Badge vidéo si disponible */}
@@ -171,38 +177,57 @@ export default function ProjectCard({ project, labels, onOpen }: Props) {
         </button>
 
         {/* Card content */}
-        <div className="p-5">
+        <div className={compact ? "p-4" : "p-5"}>
           {/* Org badge + period */}
-          <div className="flex items-center gap-2 mb-3">
+          <div className={`flex items-center gap-2 ${compact ? "mb-2" : "mb-3"}`}>
             <span className={`rounded-md px-2.5 py-1 text-xs font-semibold ${orgStyle.badge}`}>
               {orgStyle.text}
             </span>
-            <span className="text-sm text-zinc-500 dark:text-slate-400">{project.period}</span>
+            <span className={`${compact ? "text-xs" : "text-sm"} text-zinc-500 dark:text-slate-400`}>
+              {project.period}
+            </span>
           </div>
 
           {/* Title */}
-          <h3 className="text-lg font-bold text-zinc-900 dark:text-slate-100 mb-2">
+          <h3
+            className={`font-bold text-zinc-900 dark:text-slate-100 ${
+              compact ? "text-base mb-1.5" : "text-lg mb-2"
+            }`}
+          >
             {project.name}
           </h3>
 
           {/* Description */}
-          <p className="text-sm text-zinc-600 dark:text-slate-400 mb-4">{project.summary}</p>
+          <p
+            className={`text-zinc-600 dark:text-slate-400 ${
+              compact ? "text-xs mb-3 line-clamp-2" : "text-sm mb-4"
+            }`}
+          >
+            {project.summary}
+          </p>
 
           {/* Tech stack */}
           <div className="flex flex-wrap gap-2">
-            {project.stack.map((tech) => (
+            {visibleStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600 dark:bg-slate-700 dark:text-slate-300"
+                className={`rounded-full bg-zinc-100 font-medium text-zinc-600 dark:bg-slate-700 dark:text-slate-300 ${
+                  compact ? "px-2.5 py-0.5 text-[11px]" : "px-3 py-1 text-xs"
+                }`}
               >
                 {tech}
               </span>
             ))}
+            {hiddenStackCount > 0 && (
+              <span className="rounded-full bg-zinc-100 px-2.5 py-0.5 text-[11px] font-medium text-zinc-500 dark:bg-slate-700 dark:text-slate-400">
+                +{hiddenStackCount}
+              </span>
+            )}
           </div>
 
           {/* Project link - adapté selon vidéo ou lien externe */}
           {(project.link || hasVideo) && (
-            <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-slate-700">
+            <div className={`border-t border-zinc-100 dark:border-slate-700 ${compact ? "mt-3 pt-3" : "mt-4 pt-4"}`}>
               {hasVideo ? (
                 <button
                   onClick={() => setIsVideoOpen(true)}

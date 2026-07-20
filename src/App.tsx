@@ -13,7 +13,6 @@ import NextStep from "./components/ui/NextStep";
 const Home = lazy(() => import("./components/pages/Home"));
 const Experience = lazy(() => import("./components/pages/Experience"));
 const Projects = lazy(() => import("./components/pages/Projects"));
-const Skills = lazy(() => import("./components/pages/Skills"));
 const Education = lazy(() => import("./components/pages/Education"));
 const Recommendations = lazy(() => import("./components/pages/Recommendations"));
 const Contact = lazy(() => import("./components/pages/Contact"));
@@ -83,7 +82,6 @@ export default function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/experience" element={<Experience />} />
                   <Route path="/projects" element={<Projects />} />
-                  <Route path="/skills" element={<Skills />} />
                   <Route path="/education" element={<Education />} />
                   <Route path="/recommendations" element={<Recommendations />} />
                   <Route path="/contact" element={<Contact />} />
