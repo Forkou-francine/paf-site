@@ -33,6 +33,9 @@ const techColors: Record<string, string> = {
   Kubernetes: "border-blue-400 text-blue-600 dark:border-blue-500 dark:text-blue-400",
   "GitLab CI": "border-orange-400 text-orange-600 dark:border-orange-500 dark:text-orange-400",
   SonarQube: "border-cyan-400 text-cyan-600 dark:border-cyan-500 dark:text-cyan-400",
+  Angular: "border-red-400 text-red-600 dark:border-red-500 dark:text-red-400",
+  Firebase: "border-amber-400 text-amber-600 dark:border-amber-500 dark:text-amber-400",
+  Bitbucket: "border-blue-400 text-blue-600 dark:border-blue-500 dark:text-blue-400",
 };
 
 const defaultTechColor = "border-zinc-300 text-zinc-600 dark:border-slate-600 dark:text-slate-400";

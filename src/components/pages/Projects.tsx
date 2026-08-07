@@ -5,11 +5,17 @@ import ProjectCard from "../projects/ProjectCard";
 import Lightbox from "../projects/LightBox";
 import { usePortfolioContent } from "../../hooks/usePortfolioContent";
 
+// Technos exclues de la barre de filtres (elles restent affichées sur les cartes projet).
+const HIDDEN_FILTER_TECHS = new Set(["Athena", "DuckDB", "Glue"]);
+
 export default function Projects() {
   const { projects, labels } = usePortfolioContent();
 
   const allTechs = useMemo(
-    () => Array.from(new Set(projects.flatMap((p) => p.stack))).sort(),
+    () =>
+      Array.from(new Set(projects.flatMap((p) => p.stack)))
+        .filter((tech) => !HIDDEN_FILTER_TECHS.has(tech))
+        .sort(),
     [projects],
   );
 

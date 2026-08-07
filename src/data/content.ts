@@ -2,6 +2,9 @@ import heroPhoto from "../assets/ange1.jpg";
 import cnafDashboard from "../assets/projects/tb-reclam.jpeg";
 import cnafAnalyse from "../assets/projects/project2.png";
 import adonisDashboard from "../assets/adonis.jpeg";
+import mycelia from "../assets/projects/mycelia.png";
+import mycelia1 from "../assets/projects/mycelia1.png";
+import mycelia2 from "../assets/projects/mycelia2.png";
 import schoolProjectOne from "../assets/projects/project1.png";
 import schoolProjectTwo from "../assets/projects/project3.png";
 import schoolProjectTwoOne from "../assets/projects/ae.png";
@@ -228,11 +231,23 @@ const frenchContent: PortfolioContent = {
       title: "Stage - Ingénieur Logiciel",
       period: "Fév. 2024 - Août 2024",
       bullets: [
-        "Développement d'une solution de visualisation de données réseaux de transport optique : API Python (FastAPI) et TypeScript (Vue.js) pour créer des dashboards interactifs.",
+        "Développement d'une solution de visualisation de données pour les réseaux de transport optique (API Python/FastAPI + TypeScript/Vue.js), améliorant de 25 % l'analyse des performances réseau.",
         "Administration de bases de données NoSQL (MongoDB) sur clusters Kubernetes (Linux).",
         "Mise en place de pipelines CI/CD via GitLab CI et SonarQube pour le contrôle qualité.",
       ],
       tech: ["FastAPI", "Vue.js", "TypeScript", "MongoDB", "Kubernetes", "GitLab CI", "SonarQube"],
+    },
+    {
+      company: "MBOA Digital",
+      location: "Yaoundé, CM",
+      title: "Stage - Consultante logicielle",
+      period: "Mai 2022 - Août 2022",
+      bullets: [
+        "Conception d'une solution de gestion et de suivi des activités d'un espace de coworking.",
+        "Analyse des processus internes et traduction des besoins métier en fonctionnalités.",
+        "Développement de fonctionnalités automatisant le suivi des espaces, des utilisateurs et des opérations.",
+      ],
+      tech: ["Angular", "Firebase", "Bitbucket"],
     },
   ],
   education: [
@@ -294,6 +309,24 @@ const frenchContent: PortfolioContent = {
       gallery: [adonisDashboard],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
       videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
+    },
+    {
+      name: "Mycelia : Pipeline de données serverless (AWS)",
+      org: "EPSI - M2",
+      role: "Data Engineer",
+      period: "2026",
+      summary:
+        "Simulation d'une civilisation de champignons souterrains, support d'un pipeline de données serverless de bout en bout sur AWS : de la création du monde à son extinction, piloté par des jobs Glue et analysé avec Athena.",
+      bullets: [
+        "Pipeline serverless event-driven : S3 en architecture Medallion, 4 jobs Glue (PySpark), orchestration EventBridge, analyse SQL avec Athena",
+        "Modélisation dimensionnelle (planète, biomes, hyphes, KPI) en Parquet partitionné, avec un journal d'événements en JSON",
+        "Simulation d'écosystème : 5 espèces, 4 biomes, règles d'évolution (naissance, migration, reproduction, mutation) et catastrophe déclenchée à 1000 habitants",
+        "Monitoring résilient : bascule sur la couche Gold + Athena quand les permissions CloudWatch étaient bloquées",
+      ],
+      cover: mycelia,
+      gallery: [mycelia, mycelia1, mycelia2],
+      stack: ["AWS", "S3", "Glue", "PySpark", "Athena", "Python"],
+      link: "https://github.com/Forkou-francine/tp_AWS_mycelia",
     },
     {
       name: "Tableau de bord des réclamations",
@@ -581,7 +614,7 @@ const englishContent: PortfolioContent = {
     name: "Ange Francine FORKOU",
     title: "Data Engineer & BI Developer",
     tagline: "",
-    bio: "I'm a Data Engineer at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years — and I write about what I learn along the way.",
+    bio: "I'm a Data Engineer at CNAF, where I build the pipelines and dashboards that help 101 French family-allowance offices track their complaints. Databricks, PySpark, Power BI and Azure have been my daily stack for two years.",
     location: "Ille-et-Vilaine, France",
     email: "francineforkou@gmail.com",
     phone: "+33 6 95 27 78 30",
@@ -627,11 +660,23 @@ const englishContent: PortfolioContent = {
       title: "Internship - Software Engineer",
       period: "Feb. 2024 - Aug. 2024",
       bullets: [
-        "Developed a data visualization app for optical transport networks: Python API (FastAPI) backend, TypeScript (Vue.js) frontend",
+        "Developed a data visualization app for optical transport networks (Python/FastAPI backend, TypeScript/Vue.js frontend), improving network performance analysis by 25%",
         "Administered MongoDB databases on Kubernetes clusters in a Linux environment",
         "Set up CI/CD pipelines with GitLab CI and quality control via SonarQube",
       ],
       tech: ["FastAPI", "Vue.js", "TypeScript", "MongoDB", "Kubernetes", "GitLab CI", "SonarQube"],
+    },
+    {
+      company: "MBOA Digital",
+      location: "Yaoundé, CM",
+      title: "Internship - Software Consultant",
+      period: "May 2022 - Aug. 2022",
+      bullets: [
+        "Designed a management and tracking solution for a coworking space's activities.",
+        "Analyzed internal processes and translated business needs into features.",
+        "Developed features automating the tracking of spaces, users and operations.",
+      ],
+      tech: ["Angular", "Firebase", "Bitbucket"],
     },
   ],
   education: [
@@ -674,6 +719,24 @@ const englishContent: PortfolioContent = {
       videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
     },
     {
+      name: "Mycelia: Serverless data pipeline (AWS)",
+      org: "EPSI - M2",
+      role: "Data Engineer",
+      period: "2026",
+      summary:
+        "A simulation of an underground fungal civilization powering an end-to-end serverless data pipeline on AWS: from the world's genesis to its extinction, driven by Glue jobs and analyzed with Athena.",
+      bullets: [
+        "Event-driven serverless pipeline: S3 in a Medallion architecture, 4 Glue (PySpark) jobs, EventBridge orchestration, SQL analysis with Athena",
+        "Dimensional modeling (planet, biomes, hyphae, KPIs) in partitioned Parquet, with a JSON event log",
+        "Ecosystem simulation: 5 species, 4 biomes, evolution rules (birth, migration, reproduction, mutation) and a disaster triggered at 1,000 inhabitants",
+        "Resilient monitoring: fell back to the Gold layer + Athena when CloudWatch permissions were blocked",
+      ],
+      cover: mycelia,
+      gallery: [mycelia, mycelia1, mycelia2],
+      stack: ["AWS", "S3", "Glue", "PySpark", "Athena", "Python"],
+      link: "https://github.com/Forkou-francine/tp_AWS_mycelia",
+    },
+    {
       name: "National Complaints Dashboard",
       org: "CNAF - Apprenticeship",
       role: "Data Engineer & BI Lead",
@@ -689,6 +752,7 @@ const englishContent: PortfolioContent = {
       gallery: [cnafDashboard, cnafAnalyse],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
       link: cnafDashboard,
+      videoUrl: "https://www.loom.com/share/b2131ab6daba43808221329698323a9e",
     },
     {
       name: "Databricks AI/BI Dashboards POC",
@@ -722,7 +786,8 @@ const englishContent: PortfolioContent = {
         "Airflow orchestration via Docker: daily DAG with 4 sequential tasks",
         "Interactive Streamlit dashboard with global quality score and category drill-down",
       ],
-      cover: fintechPipeline,
+      cover: fintechDashboard,
+      gallery: [fintechDashboard, fintechTable, fintechPipeline, fintechArchi],
       stack: ["Python", "Dbt", "Airflow", "DuckDB", "Streamlit", "Docker"],
       link: "https://github.com/Forkou-francine/fintech-data-quality-pipeline",
     },
