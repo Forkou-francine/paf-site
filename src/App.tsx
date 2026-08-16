@@ -5,6 +5,7 @@ import { ThemeProvider } from "./hooks/ThemeProvider";
 import { LanguageProvider, useLanguage } from "./hooks/LanguageProvider";
 import ScrollToTop from "./router/ScrollToTop";
 
+import { Analytics } from "@vercel/analytics/react";
 import Navbar from "./components/navigation/Navbar";
 import Footer from "./components/ui/Footer";
 import Background from "./components/ui/Background";
@@ -93,6 +94,7 @@ export default function App() {
           </AnimatePresence>
 
           <Footer />
+          <Analytics />
         </div>
         </MotionConfig>
         </LazyMotion>
