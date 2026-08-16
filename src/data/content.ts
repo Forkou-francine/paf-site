@@ -308,7 +308,7 @@ const frenchContent: PortfolioContent = {
       cover: adonisDashboard,
       gallery: [adonisDashboard],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
-      videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
+      videoUrl: "https://youtu.be/khJSge_4G1I",
     },
     {
       name: "Mycelia : Pipeline de données serverless (AWS)",
@@ -716,7 +716,7 @@ const englishContent: PortfolioContent = {
       cover: adonisDashboard,
       gallery: [adonisDashboard],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
-      videoUrl: "https://www.loom.com/share/ea4881fe12e84bef8470f04d8d1a9cd9",
+      videoUrl: "https://youtu.be/khJSge_4G1I",
     },
     {
       name: "Mycelia: Serverless data pipeline (AWS)",
