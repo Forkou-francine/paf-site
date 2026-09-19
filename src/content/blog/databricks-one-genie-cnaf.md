@@ -1,5 +1,5 @@
 ---
-title: "Databricks One + Genie à la CNAF : jusqu'où rapprocher le Lakehouse de la BI ?"
+title: "Databricks AI/BI + Genie à la CNAF : jusqu'où rapprocher le Lakehouse de la BI ?"
 date: "2025-11-18"
 excerpt: "Retour sur un POC autour de Databricks One, des AI/BI Dashboards et de Genie, à partir d'un dashboard Power BI existant. Où doit se situer la frontière entre plateforme Data + AI et outil de BI ?"
 tags: [Databricks, Power BI, Genie, Business Intelligence, POC]
