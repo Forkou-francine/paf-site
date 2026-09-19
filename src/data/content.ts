@@ -5,7 +5,7 @@ import adonisDashboard from "../assets/adonis.jpeg";
 import mycelia from "../assets/projects/mycelia.png";
 import mycelia1 from "../assets/projects/mycelia1.png";
 import mycelia2 from "../assets/projects/mycelia2.png";
-import schoolProjectOne from "../assets/projects/project1.png";
+import databel from "../assets/projects/databel.png";
 import schoolProjectTwo from "../assets/projects/project3.png";
 import schoolProjectTwoOne from "../assets/projects/ae.png";
 import fintechPipeline from "../assets/projects/fintech.png";
@@ -318,7 +318,7 @@ const frenchContent: PortfolioContent = {
       cover: adonisDashboard,
       gallery: [adonisDashboard],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
-      videoUrl: "https://youtu.be/khJSge_4G1I",
+      videoUrl: "https://youtu.be/x3IyeQsu2I8",
     },
     {
       name: "Mycelia : Pipeline de données serverless (AWS)",
@@ -337,6 +337,25 @@ const frenchContent: PortfolioContent = {
       gallery: [mycelia, mycelia1, mycelia2],
       stack: ["AWS", "S3", "Glue", "PySpark", "Athena", "Python"],
       link: "https://github.com/Forkou-francine/tp_AWS_mycelia",
+    },
+    {
+      name: "Analyse du churn client (DatabelTech)",
+      org: "Freelance · Malt",
+      role: "Data Analyst",
+      period: "Juil. 2025",
+      summary:
+        "Mission freelance (via Malt) pour DatabelTech, un opérateur télécom américain : un dashboard Power BI d'analyse du churn pour comprendre pourquoi l'entreprise perd des clients, dans quels États et sur quels types de contrats.",
+      bullets: [
+        "Ingestion des données clients depuis des bases de données PostgreSQL distantes",
+        "Analyse des données clients pour identifier les principaux facteurs de résiliation",
+        "Segmentation du churn par État et par type de contrat",
+        "Dashboard Power BI interactif : KPIs, carte des États-Unis, filtres et drill-down",
+        "Pistes de rétention pour réduire le taux d'attrition",
+      ],
+      cover: databel,
+      gallery: [databel],
+      stack: ["Power BI", "DAX", "PostgreSQL"],
+      videoUrl: "https://youtu.be/Buh2MkGCVBM",
     },
     {
       name: "Tableau de bord des réclamations",
@@ -392,22 +411,6 @@ const frenchContent: PortfolioContent = {
       gallery: [fintechDashboard, fintechTable, fintechPipeline, fintechArchi],
       stack: ["Python", "Dbt", "Airflow", "DuckDB", "Streamlit", "Docker"],
       link: "https://github.com/Forkou-francine/fintech-data-quality-pipeline",
-    },
-    {
-      name: "Analyse de données e-commerce",
-      org: "EPSI - M1",
-      role: "Data Analyst projet de groupe",
-      period: "2024 - 2025",
-      summary:
-        "Projet de groupe : construction d'un data lake Hadoop pour analyser les ventes d'une plateforme e-commerce et proposer des recommandations marketing.",
-      bullets: [
-        "Ingestion et préparation des données avec Hadoop, Spark et MapReduce",
-        "Formalisation des KPIs ventes et recommandations dans un playbook marketing",
-        "Restitution via rapport interactif et soutenance",
-      ],
-      cover: schoolProjectOne,
-      stack: ["Hadoop", "Spark"],
-      link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     },
     {
       name: "Pipeline Big Data pour un labo",
@@ -737,7 +740,7 @@ const englishContent: PortfolioContent = {
       cover: adonisDashboard,
       gallery: [adonisDashboard],
       stack: ["Databricks", "Spark", "Python", "Power BI"],
-      videoUrl: "https://youtu.be/khJSge_4G1I",
+      videoUrl: "https://youtu.be/x3IyeQsu2I8",
     },
     {
       name: "Mycelia: Serverless data pipeline (AWS)",
@@ -756,6 +759,25 @@ const englishContent: PortfolioContent = {
       gallery: [mycelia, mycelia1, mycelia2],
       stack: ["AWS", "S3", "Glue", "PySpark", "Athena", "Python"],
       link: "https://github.com/Forkou-francine/tp_AWS_mycelia",
+    },
+    {
+      name: "Customer Churn Analysis (DatabelTech)",
+      org: "Freelance · Malt",
+      role: "Data Analyst",
+      period: "Jul. 2025",
+      summary:
+        "Freelance mission (via Malt) for DatabelTech, a US telecom operator: a Power BI churn dashboard to understand why the company loses customers, in which states, and on which contract types.",
+      bullets: [
+        "Ingested customer data from remote PostgreSQL databases",
+        "Analyzed customer data to identify the main drivers of churn",
+        "Segmented churn by state and by contract type",
+        "Interactive Power BI dashboard: KPIs, US map, filters and drill-down",
+        "Retention levers to reduce the attrition rate",
+      ],
+      cover: databel,
+      gallery: [databel],
+      stack: ["Power BI", "DAX", "PostgreSQL"],
+      videoUrl: "https://youtu.be/Buh2MkGCVBM",
     },
     {
       name: "National Complaints Dashboard",
@@ -811,22 +833,6 @@ const englishContent: PortfolioContent = {
       gallery: [fintechDashboard, fintechTable, fintechPipeline, fintechArchi],
       stack: ["Python", "Dbt", "Airflow", "DuckDB", "Streamlit", "Docker"],
       link: "https://github.com/Forkou-francine/fintech-data-quality-pipeline",
-    },
-    {
-      name: "E-commerce Data Analysis",
-      org: "EPSI - Big Data Workshop",
-      role: "Data Analyst (team project)",
-      period: "2024 - 2025",
-      summary:
-        "Team project: built a Hadoop data lake to analyze e-commerce sales and propose marketing recommendations.",
-      bullets: [
-        "Data ingestion and preparation with Hadoop, Spark, and MapReduce",
-        "Formalized sales KPIs and recommendations in a marketing playbook",
-        "Delivered via interactive report and presentation",
-      ],
-      cover: schoolProjectOne,
-      stack: ["Hadoop", "Spark"],
-      link: "https://www.canva.com/design/DAGfjcpth5M/lAgCMBD_27AWh9dLE6yY7g/edit?utm_content=DAGfjcpth5M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
     },
     {
       name: "Big Data Pipeline for an R&D Lab",
