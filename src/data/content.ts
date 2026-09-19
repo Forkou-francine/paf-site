@@ -119,6 +119,16 @@ export type Labels = {
     title: string;
     subtitle: string;
   };
+  blog: {
+    title: string;
+    subtitle: string;
+    readMore: string;
+    back: string;
+    empty: string;
+    minRead: string;
+    notFound: string;
+    writtenBy: string;
+  };
   recommendations: {
     title: string;
     subtitle: string;
@@ -448,7 +458,7 @@ const frenchContent: PortfolioContent = {
         { name: "Spark", detail: "Optimisation des transformations batch et streaming." },
         { name: "Python", detail: "Mon langage principal : scripts, notebooks, APIs" },
         { name: "Power BI", detail: "Modélisation DAX, Power Query; Je conçois des dashboards utilisés par des centaines de personnes" },
-        { name: "Airflow", detail: "Orchestration CI/CD et capteurs multi-sources — pour l'instant sur un projet académique." },
+        { name: "Airflow", detail: "Orchestration CI/CD et capteurs multi-sources, pour l'instant sur un projet académique." },
         { name: "Dbt", detail: "En cours d'apprentissage pour mes projets perso" },
         { name: "Azure", detail: "Storage, Data Factory et DevOps pour le monitoring." },
         { name: "Docker", detail: "Environnements reproductibles pour notebooks et APIs." },
@@ -466,6 +476,7 @@ const frenchContent: PortfolioContent = {
         { to: "/experience", label: "Expériences" },
         { to: "/projects", label: "Projets" },
         { to: "/education", label: "Formation" },
+        { to: "/blog", label: "Blog" },
         //{ to: "/recommendations", label: "Recommandations" },
         { to: "/contact", label: "Contact" },
       ],
@@ -565,6 +576,16 @@ const frenchContent: PortfolioContent = {
       title: "Formation",
       subtitle: "Mes fondations académiques.",
     },
+    blog: {
+      title: "Blog",
+      subtitle: "Mes notes sur la data, les pipelines et ce que j'apprends.",
+      readMore: "Lire l'article",
+      back: "Retour au blog",
+      empty: "Aucun article pour le moment. Reviens bientôt !",
+      minRead: "min de lecture",
+      notFound: "Cet article est introuvable.",
+      writtenBy: "Écrit par",
+    },
     recommendations: {
       title: "Recommandations",
       subtitle: "Ce que mes collègues et managers disent de moi.",
@@ -599,7 +620,7 @@ const frenchContent: PortfolioContent = {
     theme: {
       light: "Clair",
       dark: "Sombre",
-      buttonLabel: "Changer le thème — actuel : {{label}}",
+      buttonLabel: "Changer le thème (actuel : {{label}})",
     },
     nextStep: {
       kicker: "Étape suivante",
@@ -832,7 +853,7 @@ const englishContent: PortfolioContent = {
       items: [
         {
           name: "Power BI dashboards",
-          detail: "From KPI scoping to workspace publishing and governance — dashboards used by hundreds of people.",
+          detail: "From KPI scoping to workspace publishing and governance, on dashboards used by hundreds of people.",
         },
         {
           name: "Databricks pipelines",
@@ -856,7 +877,7 @@ const englishContent: PortfolioContent = {
         { name: "Spark", detail: "Optimising batch and streaming transformations." },
         { name: "Python", detail: "Dataframes, PySpark testing, and packaging best practices." },
         { name: "Power BI", detail: "DAX modelling, Power Query, and dynamic parameters." },
-        { name: "Airflow", detail: "Used on an academic project — still learning it." },
+        { name: "Airflow", detail: "Used on an academic project, still learning it." },
         { name: "Dbt", detail: "Currently learning on personal projects"},
         { name: "Azure", detail: "Storage, Data Factory, and DevOps monitoring." },
         { name: "Docker", detail: "Reproducible environments for notebooks and APIs." },
@@ -874,6 +895,7 @@ const englishContent: PortfolioContent = {
         { to: "/experience", label: "Experience" },
         { to: "/projects", label: "Projects" },
         { to: "/education", label: "Education" },
+        { to: "/blog", label: "Blog" },
         //{ to: "/recommendations", label: "Recommendations" },
         { to: "/contact", label: "Contact" },
       ],
@@ -892,7 +914,7 @@ const englishContent: PortfolioContent = {
       metricsTitle: "What I've delivered",
       metricsSubtitle: "A few results that illustrate what I deliver.",
       aboutTitle: "About me",
-      aboutText: "Cameroonian, engineer, data enthusiast. I grew up in Yaoundé, then studied computer science between Cameroon and France, in Belfort and Rennes. I stumbled into data almost by accident, during a Data Mining course in my third year — and what hooked me was the tangible side of it. When I ship a dashboard, I get to watch people use it to make decisions. That \"data → decision → impact\" loop is what keeps me going.",
+      aboutText: "Cameroonian, engineer, data enthusiast. I grew up in Yaoundé, then studied computer science between Cameroon and France, in Belfort and Rennes. I stumbled into data almost by accident, during a Data Mining course in my third year, and what hooked me was the tangible side of it. When I ship a dashboard, I get to watch people use it to make decisions. That \"data → decision → impact\" loop is what keeps me going.",
       languagesTitle: "Languages",
       softSkillsTitle: "How I work",
       interestsTitle: "Interests",
@@ -973,6 +995,16 @@ const englishContent: PortfolioContent = {
       title: "Education",
       subtitle: "My academic foundations.",
     },
+    blog: {
+      title: "Blog",
+      subtitle: "My notes on data, pipelines, and what I'm learning.",
+      readMore: "Read the article",
+      back: "Back to the blog",
+      empty: "No articles yet. Check back soon!",
+      minRead: "min read",
+      notFound: "This article could not be found.",
+      writtenBy: "Written by",
+    },
     recommendations: {
       title: "Recommendations",
       subtitle: "What my colleagues and managers say about me.",
@@ -1007,7 +1039,7 @@ const englishContent: PortfolioContent = {
     theme: {
       light: "Light",
       dark: "Dark",
-      buttonLabel: "Switch theme — current: {{label}}",
+      buttonLabel: "Switch theme (current: {{label}})",
     },
     nextStep: {
       kicker: "Up next",

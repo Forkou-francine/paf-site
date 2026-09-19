@@ -1,7 +1,7 @@
 /**
  * Fond global du site : une trame de points discrète (clin d'œil aux grilles de
  * données) posée sur deux halos colorés doux. Fixe, non interactif, en arrière-plan.
- * Instancié une seule fois dans App — inutile de le répéter par page.
+ * Instancié une seule fois dans App (inutile de le répéter par page).
  */
 export default function Background() {
   return (

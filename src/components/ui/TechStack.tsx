@@ -35,7 +35,7 @@ export default function TechStack() {
         {techTools?.category || "Technologies et outils"}
       </h3>
       <p className="mt-1 text-sm text-zinc-600 dark:text-slate-400">
-        {techTools?.intro || "Ce que j'utilise au quotidien — et ce que j'apprends."}
+        {techTools?.intro || "Ce que j'utilise au quotidien, et ce que j'apprends."}
       </p>
 
       {/* Utilisé au quotidien */}
